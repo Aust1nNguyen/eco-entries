@@ -13,16 +13,29 @@
     <!--Navbar-->
     <div class="navbar">
         <div class="container flex">
-            <h1 class="logo"><a href="index.html">App name</a></h1>
+            <h1 class="logo"><a href="/index">App name</a></h1>
             <nav>
                 <ul>
-                    <li><a href="#">Login</a></li>
-                    <li><a href="#">Sign Up</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Sign Up</a></li>
                 </ul>
             </nav>
         </div>
     </div>
 
+    <!--Login messages-->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    
     <!--Block content-->
     {% block content %}{% endblock %}
 
