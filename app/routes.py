@@ -1,6 +1,7 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, Blueprint
 from app import app
 from app.forms import LoginForm
+import re
 
 # Home view
 @app.route('/')
@@ -9,7 +10,10 @@ def home():
     return render_template('index.html')
 
 # Login view
-@app.route('/login', methods=['GET', 'POST'])
+
+authent = Blueprint("authent", __name__)
+
+@authent.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     # Form processing - check for POST request
@@ -19,7 +23,7 @@ def login():
         return redirect(url_for('index'))
     return render_template('login.html', title='Sign In', form=form)
 
-@app.route("/sign_up", methods=["GET", "POST"])
+@authent.route("/sign_up", methods=["GET", "POST"])
 def sign_up():
     if request.method == "POST":
         email = request.form.get('email')
