@@ -26,8 +26,12 @@
             <h1 class="logo"><a href="/index">App name</a></h1>
             <nav>
                 <ul>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/signup">Sign Up</a></li>
+                    {% if current_user.is_anonymous %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                    {% else %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                    {% endif %}
                 </ul>
             </nav>
        </div>
