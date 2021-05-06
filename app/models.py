@@ -8,19 +8,18 @@ from flask_login import UserMixin
 def load_user(id):
     return User.query.get(int(id))
 
-# association tables for many-to-many relationship\
-# track the enrollment of users
-class CourseEnrol(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    product_id = db.Column(db.Integer, db.ForeignKey('course.id'))
+# association tables 
+# track the user enrolment
+enrolled_course = db.Table('enrolled_course',
+    db.Column('course_id', db.Integer, db.ForeignKey('course.id')),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
+)
 
-# track the attempt quiz of user
-class QuizAttempt(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    product_id = db.Column(db.Integer, db.ForeignKey('quiz.id'))
-
+# track the user completed quiz
+completed_quiz = db.Table('completed_quiz',
+    db.Column('quiz_id', db.Integer, db.ForeignKey('quiz.id')),
+    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
+)
 
 # User model
 class User(UserMixin, db.Model):
@@ -33,9 +32,9 @@ class User(UserMixin, db.Model):
     # gained by complete quiz
     scores = db.Column(db.Integer)
     # user's enrolled courses
-    courses = db.relationship('Course', secondary='CourseEnrol', lazy = 'dynamic')
+    courses = db.relationship('Course', secondary=enrolled_course, lazy = 'dynamic')
     # user's attempted quiz
-    quizes = db.relationship('Quiz', secondary='QuizAttempt', lazy = 'dynamic')
+    quizes = db.relationship('Quiz', secondary=completed_quiz, lazy = 'dynamic')
 
     # hash plain password
     def set_password(self, password):
@@ -49,24 +48,23 @@ class User(UserMixin, db.Model):
     def __repr__ (self):
         return '<User {}>'.format(self.username)
 
-# Course mmodel
+# Course model
 class Course(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     coursename = db.Column(db.String(128), index = True, unique = True)
-    users = db.relationship('User', secondary='CourseEnrol')
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Course {}>'.format(self.id)
 
-
-# Quiz mmodel
+# Quiz model
 class Quiz(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     quizname = db.Column(db.String(128), index = True, unique = True)
     quizscore = db.Column(db.Integer())
-    users = db.relationship('User', secondary='QuizAttempt')
+    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Quiz {}>'.format(self.id)
