@@ -45,7 +45,9 @@ def sign_up():
     form = SignUpForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
-        user.set_password(form.password.data)
+        # hash the plain password
+        user.set_password(form.password1.data)
+        # Add registered user to our database
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')

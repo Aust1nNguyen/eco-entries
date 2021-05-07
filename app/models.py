@@ -29,6 +29,7 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(128), index = True, unique = True) 
     # ONLY store hashed password
     password_hash = db.Column(db.String(128))
+
     # gained by complete quiz
     scores = db.Column(db.Integer)
     # user's enrolled courses
