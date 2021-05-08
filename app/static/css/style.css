@@ -53,12 +53,13 @@ code, pre{
 .navbar{
     background-color: var(--secondary-color);
     color: #fff;
-    height: 70px;
+    height: 60px;
 }
 
 .navbar ul{
     display: flex;
     margin-left: 100px;
+    align-items: flex-end;
 }
 
 .navbar a{
@@ -67,9 +68,9 @@ code, pre{
     margin: 0 5px;
 }
 
-.navbar ul a:hover{
+/* .navbar ul a:hover{
     border-bottom: 2px #fff solid;
-}
+} */
 
 .navbar .flex {
     display: flex;
@@ -138,6 +139,40 @@ code, pre{
     max-width: 350px;
     max-height: 450px;
     justify-self: center;
+}
+
+/* Dashboard */
+.userbar .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: #44bb58;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+.userbar .menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+.card-single {
+    padding: 2rem;
+}
+
+.card-single li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 

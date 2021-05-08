@@ -98,9 +98,8 @@ def logout():
 
 # Dashboard view
 @app.route('/dashboard')
-@login_required
 def dashboard():
-    pass
+    return render_template("dashboard.html", title='Dashboard')
 
 # Run with debug mode
 if __name__ == '__main__':
