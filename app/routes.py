@@ -1,9 +1,10 @@
-from flask import Flask, render_template, flash, redirect, url_for, Blueprint
-from flask_login import login_required
-from flask_login import current_user, login_user
-from app import app
+from datetime import datetime
+from flask import Flask, render_template, flash, redirect, url_for, request, Blueprint
+from flask_login import current_user, login_user, logout_user, login_required
+from app import app, db
 from app.forms import LoginForm, SignUpForm
 from app.models import User
+from werkzeug.urls import url_parse
 import re
 
 # Home view
@@ -17,7 +18,7 @@ def home():
 def login():
     # check if user logged in
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
     form = LoginForm()
     # validate form
     if form.validate_on_submit():
@@ -33,7 +34,7 @@ def login():
         next_page = request.args.get('next')
         # if there is no next argument or next redirect to other domain return to index page
         if not next_page or url_parse(next_page).netloc != '':
-            next_page = url_for('index')
+            next_page = url_for('dashboard')
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
@@ -41,12 +42,12 @@ def login():
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('dashboard'))
     form = SignUpForm()
     if form.validate_on_submit():
         user = User(username=form.username.data, email=form.email.data)
         # hash the plain password
-        user.set_password(form.password1.data)
+        user.set_password(form.password.data)
         # Add registered user to our database
         db.session.add(user)
         db.session.commit()
@@ -104,3 +105,4 @@ def dashboard():
 # Run with debug mode
 if __name__ == '__main__':
     app.run(debug=True)
+
