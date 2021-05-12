@@ -54,6 +54,11 @@ def sign_up():
         return redirect(url_for('login'))
     return render_template('sign_up.html', title='Sign Up', form=form)
 
+# Quiz view
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', title='Quiz', form='quizForm')
+
 # Logout view
 @app.route('/logout')
 def logout():
