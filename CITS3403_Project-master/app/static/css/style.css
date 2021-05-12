@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+:root {
+    --primary-color:#44bb58;
+    --secondary-color: #2f802c;
+    --dark-color: #002240;
+    --light-color: #f4f4f4;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    font-family: "Lato", sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+ul{
+    list-style-type: none;
+}
+
+a{
+    text-decoration: none;
+    color: #333;
+}
+
+h1,
+h2{
+    font-weight: 300;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+p{
+    margin: 10px 0;
+}
+
+img {
+    width: 100%;
+}
+
+code, pre{
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+/* Nav bar */
+.navbar{
+    background-color: var(--secondary-color);
+    color: #fff;
+    height: 60px;
+}
+
+.navbar ul{
+    display: flex;
+    margin-left: 100px;
+    align-items: flex-end;
+}
+
+.navbar a{
+    color: #fff;
+    padding: 10px;
+    margin: 0 5px;
+}
+
+/* .navbar ul a:hover{
+    border-bottom: 2px #fff solid;
+} */
+
+.navbar .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+/* Showcase */
+.showcase{
+    height: 400px;
+    background-color: var(--primary-color);
+    color: #fff;
+    position: relative;
+}
+
+.showcase h1{
+    font-size: 60px;
+    font-weight: bolder;
+}
+
+.showcase p{
+    margin: 20px 0;
+}
+
+.showcase .grid{
+    grid-template-columns: 55% 45%;
+    gap: 30px;
+    overflow: visible;
+}
+
+.showcase-text{
+    animation: slideInFromLeft 1s ease-in;
+}
+
+/* Stats */
+.stats{
+    padding-top: 100px;
+    animation: slideInFromBottom 1s ease-in;
+}
+
+.stats-heading{
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+}
+
+.stats .grid h3{
+    font-size: 35px;
+}
+.stats .grid p{
+    font-size: 16px;
+}
+
+/* Student, Teacher */
+.student,
+.teacher {
+    max-width: 100%;
+    max-height: 500px;
+    overflow: hidden;
+
+}
+
+.student img, 
+.teacher img{
+    max-width: 350px;
+    max-height: 450px;
+    justify-self: center;
+}
+
+/* Dashboard */
+.userbar .flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: #44bb58;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+.userbar .menu{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 300px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+}
+
+.card-single {
+    padding: 2rem;
+}
+
+.card-single li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+
+/* Footer */
+.footer .social a{
+    margin: 0 10px;
+}
+
+/* Animations */
+@keyframes slideInFromLeft{
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight{
+    0% {
+        transform: translateX(100%);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromTop{
+    0% {
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromBottom{
+    0% {
+        transform: translateY(100%);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+}
+
+
+/* Tablets and under */
+@media(max-width: 768px){
+    .grid,
+    .showcase .grid,
+    .stats .grid,
+    .cli .grid,
+    .cloud .grid ,
+    .features-main .grid,
+    .docs-main .grid{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+    }
+
+    .showcase{
+        height: auto;
+    }
+
+    .showcase-text{
+        text-align: center;
+        margin-top: 40px;
+        animation: slideInFromTop 1s ease-in;
+    }
+
+    .showcase-form{
+        text-align: center;
+        margin: auto;
+        animation: slideInFromBottom 1s ease-in;
+    }
+}
+
+/* Mobile */
+@media(max-width: 500px){
+    .navbar{
+        height: 110px;
+    }
+
+    .navbar .flex{
+        flex-direction: column;
+    }
+
+    .navbar ul{
+        padding: 10px;
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
