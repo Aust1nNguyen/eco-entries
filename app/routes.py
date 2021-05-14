@@ -57,6 +57,7 @@ def sign_up():
 
 # Quiz view
 @app.route('/quiz')
+@login_required
 def quiz():
     return render_template('quiz.html', title='Quiz', form='quizForm')
 
@@ -64,7 +65,7 @@ def quiz():
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return redirect(url_for('dashboard'))
 
 
 # authent = Blueprint("authent", __name__)
@@ -104,6 +105,7 @@ def logout():
 
 # Dashboard view
 @app.route('/dashboard')
+@login_required
 def dashboard():
     return render_template("dashboard.html", title='Dashboard')
 

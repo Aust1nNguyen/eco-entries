@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
-   <link
+   <!-- <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
     integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -13,7 +13,7 @@
     <link
     rel="stylesheet"
     href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    crossorigin="anonymous"/>
+    crossorigin="anonymous"/> -->
 
  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
@@ -23,7 +23,17 @@
     <!--Navbar-->
     <div class="navbar">
         <div class="container flex">
-            <h3 class="logo"><a href="/index">App name</a></h3>
+          <div class="flex">
+            <h2 class="logo"><a href="/index">App name</a></h3>
+              {% if current_user.is_anonymous %}
+              <a href="">Course</a></li>
+              <a href="{{ url_for('quiz') }}">Quiz</a></li>
+              {% else %}
+              <a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+              <a href="">Course</a></li>
+              <a href="{{ url_for('quiz') }}">Quiz</a></li>
+              {% endif %}
+          </div>
             <nav>
                 <ul>
                     {% if current_user.is_anonymous %}
@@ -33,7 +43,7 @@
                     <li><{{current_user.username}}</li>
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
                     {% endif %}
-                    <li><a href="{{ url_for('quiz') }}">Quiz</a></li>
+                    
                 </ul>
             </nav>
        </div>

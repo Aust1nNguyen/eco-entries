@@ -4,11 +4,11 @@
     <div class="userbar">
         <div class="container flex">
             <div class="user">
-                <h3><b>John Doe</b></h3>
+                <h3><b>{{ current_user.username }}</b></h3>
             </div>
             <div class="menu">
-                    <a href="course">Learn</a>
-                    <a href="quiz">Quiz</a>
+                    <a href="">Course</a>
+                    <a href="{{ url_for('quiz') }}">Quiz</a>
                     <a href="progress">Progress</a>  
                     <a href="">Profile</a>  
             </div>
