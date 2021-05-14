@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template, flash, redirect, url_for, request, Blueprint
+from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, SignUpForm
@@ -61,6 +61,32 @@ def logout():
     logout_user()
     return redirect(url_for('index'))
 
+# Quiz view
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', title='Quiz', form='quizForm')
+
+# Course 1 view
+@app.route('/courses')
+def courses():
+    return render_template("courses.html", title= "Courses")
+
+# Courses view
+@app.route('/content')
+def content():
+    return render_template("content.html", title= "Content")
+
+# Dashboard view
+@app.route('/dashboard')
+def dashboard():
+    return render_template("dashboard.html", title='Dashboard')
+
+# Run with debug mode
+if __name__ == '__main__':
+    app.run(debug=True)
+
+
+
 
 # authent = Blueprint("authent", __name__)
 
@@ -95,14 +121,3 @@ def logout():
 #         else:
 #             flash('Account created!', category='success')
 #     return render_template("sign_up.html")
-
-
-# Dashboard view
-@app.route('/dashboard')
-def dashboard():
-    return render_template("dashboard.html", title='Dashboard')
-
-# Run with debug mode
-if __name__ == '__main__':
-    app.run(debug=True)
-
