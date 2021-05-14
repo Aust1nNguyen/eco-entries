@@ -55,18 +55,21 @@ def sign_up():
         return redirect(url_for('login'))
     return render_template('sign_up.html', title='Sign Up', form=form)
 
-
 # Logout view
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return redirect(url_for('index'))
 
 # Quiz view
-@app.route('/quiz')
-@login_required
-def quiz():
-    return render_template('quiz.html', title='Quiz', form='quizForm')
+@app.route('/ds_quiz')
+def ds_quiz():
+    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+
+# Course 1 view
+@app.route('/courses')
+def courses():
+    return render_template("courses.html", title= "Courses")
 
 # Courses view
 @app.route('/content')
@@ -75,11 +78,58 @@ def content():
 
 # Dashboard view
 @app.route('/dashboard')
-@login_required
 def dashboard():
     return render_template("dashboard.html", title='Dashboard')
+
+@app.route("/elasticity")
+def elasticity():
+    return render_template("elasticity.html", title= "Elasticity")
+
+@app.route("/ds")
+def ds():
+    return render_template("ds.html", title= "Demand and Supply")
+
+@app.route("/surplus")
+def surplus():
+    return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
 # Run with debug mode
 if __name__ == '__main__':
     app.run(debug=True)
 
+
+
+
+# authent = Blueprint("authent", __name__)
+
+# @authent.route('/login', methods=['GET', 'POST'])
+# def login():
+#     form = LoginForm()
+#     # Form processing - check for POST request
+#     if form.validate_on_submit():
+#         flash('Login requested for user {}, remember_me={}'.format(
+#             form.username.data, form.remember_me.data))
+#         return redirect(url_for('index'))
+#     return render_template('login.html', title='Sign In', form=form)
+
+# @authent.route("/sign_up", methods=["GET", "POST"])
+# def sign_up():
+#     if request.method == "POST":
+#         email = request.form.get('email')
+#         username = request.form.get('username')
+#         password1 = request.form.get("password1")
+#         password2 = request.form.get("password2")
+
+#         if (re.search('\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b', email)) == None:
+#             flash('Email address is invalid.', category='error')
+#         elif len(email) < 4:
+#             flash("Please enter a valid email.", category="error")
+#         elif len(username) < 2:
+#             flash('Username must be greater than 1 character.', category='error')
+#         elif password1 != password2:
+#             flash('Passwords don\'t match.', category='error')
+#         elif len(password1) < 8:
+#             flash('Password must be at least 8 characters.', category='error')
+#         else:
+#             flash('Account created!', category='success')
+#     return render_template("sign_up.html")
