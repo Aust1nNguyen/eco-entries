@@ -1,13 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}  
+
+<div class="navbar">
+    <div class="container flex">
+        <h3 class="logo"><a href="/index">App name</a></h3>
+        <nav>
+            <ul>
+                {% if current_user.is_anonymous %}
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                {% else %}
+                <li>{{current_user.username}}</li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+   </div>
+</div>
+
     <!--Showcase-->
     <section class="showcase">
         <div class="container grid">
             <div class="showcase-text">
                 <h1>Learn Fast, Learn Better</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores officia maxime dignissimos dolores ea, recusandae dolorem nisi non deserunt similique commodi quidem temporibus unde, praesentium, a inventore laboriosam vero placeat!</p>
-                <a href="courses.html" class="btn btn-outline">Read More</a>
+                <p>Economics is a social science concerned with the production, distribution, and consumption of goods and services. 
+                    It studies how individuals, businesses, governments, and nations make choices about how to allocate resources.
+                    Economics can generally be broken down into macroeconomics, 
+                    which concentrates on the behavior of the economy as a whole, and microeconomics, which focuses on individual people and businesses.
+                    Learn more about the basics of economics by taking our free courses!
+                </p>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline">Get Started</a>
             </div>
 
             <div class="showcase-img">
@@ -26,18 +49,18 @@
             <div class="grid grid-3 text-center my-4">
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Lorem, ipsum.</h3>
-                    <p class="text-top m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui aut vel unde, odio minima quam.</p>
+                    <h3>Courses</h3>
+                    <p class="text-top m-3">We offer a range of different courses in micro and macro economics.</p>
                 </div>
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Lorem, ipsum.</h3>
-                    <p class="text-top m-3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Soluta odio fugit saepe dolores molestias ut.</p>
+                    <h3>Quizzes</h3>
+                    <p class="text-top m-3">Take our quizzes to test yourself on your knowledge.</p>
                 </div>
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Lorem, ipsum.</h3>
-                    <p class="text-top m-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id dolores doloribus consectetur nostrum!</p>
+                    <h3>Feedback</h3>
+                    <p class="text-top m-3">Receive feedback to understand where you can improve.</p>
                 </div>
             </div>
         </div>
@@ -47,8 +70,9 @@
     <section class="student bg-primary my-2 py-2">
         <div class="container grid">
             <div class="text-center">
-                <h2 class="lg">Lorem ipsum dolor sit amet.</h2>
-                <p class="lead my-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, temporibus!</p>
+                <h2 class="lg">Microeconomics</h2>
+                <p class="lead my-1">Microeconomics is a study of the behavior of individuals and firms in making decisions regarding the 
+                    allocation of scarce resources and the interactions among these individuals and firms.</p>
                 <a href="features.html" class="btn btn-dark">Read More</a>
             </div>
             <img src="static/images/stationery.jpeg" alt="">
@@ -60,8 +84,9 @@
         <div class="container grid">
             <img src="static/images/laptop.jpg" alt="">
             <div class="text-center">
-                <h2 class="lg">Lorem ipsum dolor sit amet.</h2>
-                <p class="lead my-1">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur, temporibus!</p>
+                <h2 class="lg">Macroeconomics</h2>
+                <p class="lead my-1">Macroeconomics is a branch of economics dealing with the 
+                    performance, structure, behavior, and decision-making of an economy as a whole.</p>
                 <a href="features.html" class="btn btn-dark">Read More</a>
             </div>
         </div>
