@@ -2,23 +2,6 @@
 
 {% block content %}  
 
-<div class="navbar">
-    <div class="container flex">
-        <h3 class="logo"><a href="/index">App name</a></h3>
-        <nav>
-            <ul>
-                {% if current_user.is_anonymous %}
-                <li><a href="{{ url_for('login') }}">Login</a></li>
-                <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
-                {% else %}
-                <li>{{current_user.username}}</li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                {% endif %}
-            </ul>
-        </nav>
-   </div>
-</div>
-
     <!--Showcase-->
     <section class="showcase">
         <div class="container grid">
@@ -42,9 +25,6 @@
     <!--Stats-->
     <section class="stats">
         <div class="container">
-            <h1 class="stats-heading text-center my-1">
-                Interactive learning
-            </h1>
 
             <div class="grid grid-3 text-center my-4">
                 <div>
