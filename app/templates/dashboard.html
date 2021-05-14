@@ -1,19 +1,34 @@
 {% extends "base.html" %}
 
 {% block content %}
+<<<<<<< HEAD
     <div class="userbar">
         <div class="container flex">
             <div class="user">
                 <h3><b>{{ current_user.username }}</b></h3>
             </div>
             <div class="menu">
-                    <a href="">Course</a>
+                    <a href="{{ url_for('course') }">Course</a>
                     <a href="{{ url_for('quiz') }}">Quiz</a>
                     <a href="progress">Progress</a>  
                     <a href="">Profile</a>  
             </div>
         </div>
     </div>
+=======
+<div class="navbar">
+    <div class="container flex">
+        <h3 class="logo"><a href="/index">App name</a></h3>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('content') }}">Courses</a></li>
+                <li><a href="{{ url_for('quiz') }}">Quizzes</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </nav>
+   </div>
+</div>
+>>>>>>> 90dbb474b421bbdfd3307dad529306aa5e0aa24d
 
     <div class="cards">
         <div class="card-single">
