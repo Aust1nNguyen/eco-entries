@@ -7,6 +7,8 @@ from app.models import User
 from werkzeug.urls import url_parse
 import re
 
+
+
 # Home view
 @app.route('/')
 @app.route('/index')
@@ -38,6 +40,9 @@ def login():
         return redirect(next_page)
     return render_template('login.html', title='Sign In', form=form)
 
+
+
+
 # Sign up view
 @app.route('/sign_up', methods=['GET', 'POST'])
 def sign_up():
@@ -61,28 +66,12 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-# Quiz view
-@app.route('/ds_quiz')
-def ds_quiz():
-    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
-
-# Course 1 view
-@app.route('/courses')
-def courses():
-    return render_template("courses.html", title= "Courses")
-
 # Courses view
 @app.route('/content')
 def content():
     if current_user.is_authenticated:
         current_user.enroll_course()
     return render_template("content.html", title= "Content")
-
-# Dashboard view
-@app.route('/dashboard')
-@login_required
-def dashboard():
-    return render_template("dashboard.html", title='Dashboard')
 
 @app.route("/elasticity")
 def elasticity():
@@ -95,6 +84,37 @@ def ds():
 @app.route("/surplus")
 def surplus():
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
+
+
+
+# Dashboard view
+@app.route('/dashboard')
+def dashboard():
+    return render_template("dashboard.html", title='Dashboard')
+
+@app.route("/profile")
+def profile():
+    return render_template("profile.html", title= "Profile")
+
+
+
+
+# Quiz view
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/ds_quiz')
+def ds_quiz():
+    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/elasticity_quiz')
+def elasticity_quiz():
+    return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/surplus_quiz')
+def surplus_quiz():
+    return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
 
 # Run with debug mode
 if __name__ == '__main__':

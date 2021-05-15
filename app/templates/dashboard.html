@@ -1,31 +1,61 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class="sidebar">
+    <div class="sidebar-menu">
+        <ul>
+            <li>
+                <a href="" class="active">Dashboard</a>
+            </li>
+            <li>
+                <a href="">Learn</a>
+            </li>
+            <li>
+                <a href="">Quiz</a>
+            </li>
+            <li>
+                <a href="">Progress</a>
+            </li>
+            <li>
+                <a href="{{ url_for('profile') }}">Profile</a>
+            </li>
+        </ul>
+    </div>
 
-    <div class="cards">
-        <div class="card-single">
-            <h3><b>Continue Learning</b></h3>
+</div>
+<div class="main-content">
+    <header>
+        <div class="user-wrapper">
+            <h4>John Doe</h4>            
+        </div>
+    </header>
+
+    <main>
+        <div class="cards">
+            <div class="card-single">
+                <h3>Enrolled course</h3>
+                    <ul>
+                        <li><a href="">Course 1</a></li>
+                        <li><a href="">Course 2</a></li>
+                    </ul>
+               
+            </div>
+            <div class="card-single">
+                <h3>Completed course</h3>
                 <ul>
                     <li><a href="">Course 1</a></li>
                     <li><a href="">Course 2</a></li>
                 </ul>
-           
+            </div>
+            <div class="card-single">
+                <h3>Completed quiz</h3>
+                <ul>
+                    <li><a href="">Quiz 1</a></li>
+                    <li><a href="">Quiz 2</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="card-single">
-            <h3><b>Completed course</b></h3>
-            <ul>
-                <li><a href="">Course 1</a></li>
-                <li><a href="">Course 2</a></li>
-            </ul>
-        </div>
-        <div class="card-single">
-            <h3><b>Completed quiz</b></h3>
-            <ul>
-                <li><a href="">Quiz 1</a></li>
-                <li><a href="">Quiz 2</a></li>
-            </ul>
-        </div>
-    </div>
+    </main>
+</div>
 
-    
 {% endblock %}

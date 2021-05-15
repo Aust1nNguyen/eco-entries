@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<head>
+  <script src="{{ url_for('static', filename='js/quizScript.js') }}"></script>
+  <style>
+    .correct{
+      border-style: solid;
+      border-color: green;
+    }
+    .wrong{
+      border-style: solid;
+      border-color: red;
+    }
+  </style>
+</head>
+
+<div id="container">
+  <header>
+      <h1>Consumer and Producer Surplus</h1>
+  </header>
+  <section>
+      <div id="results"></div>
+      <form action="#" name="quizForm" onsubmit="return submitAnswers()">
+          <h3 id ="q1h">Consumer surplus is best defined as:</h3>
+          <input type="radio" name="q1" value="a" id="q1a"> The additional benefit consumers obtain when the price they are prepared to pay is greater than the price they actually pay. 
+          <br>
+          <input type="radio" name="q1" value="b" id="q1b"> The total benefit derived by customers when the market is in equilibrium.<br>
+          <input type="radio" name="q1" value="c" id="q1c"> The reward gained by employees when they sell their labour to a profit maximising firm.
+          <br>
+          <input type="radio" name="q1" value="d" id="q1d"> The difference between consumer spending and revenue earned by producers.<br>
+
+          <h3 id ="q2h">Producer surplus is best defined as:</h3>
+          <input type="radio" name="q2" value="a" id="q2a"> The difference between consumer spending and revenue earned by producers.<br>
+          <input type="radio" name="q2" value="b" id="q2b"> The total benefit derived by producers when the market is in equilibrium.<br>
+          <input type="radio" name="q2" value="c" id="q2c"> The additional benefit producers obtain when the price they are prepared to acept is less than the price they actually receive. <br>
+          <input type="radio" name="q2" value="d" id="q2d"> None of the above.<br>
+
+          <h3 id ="q3h">Along a given downward-sloping demand curve, an increase in the price of a good will _____ consumer surplus.:</h3>
+          <input type="radio" name="q3" value="a" id="q3a"> increase.<br>
+          <input type="radio" name="q3" value="b" id="q3b"> decrease.<br>
+          <input type="radio" name="q3" value="c" id="q3c"> not change.<br>
+          <input type="radio" name="q3" value="d" id="q3d"> The answer cannot be determined without information about the supply curve.<br>
+
+          <h3 id ="q4h">Maximum total surplus in the market for chocolate occurs when:</h3>
+          <input type="radio" name="q4" value="a" id="q4a"> Total net gain to producers is minimised.
+          <br>
+          <input type="radio" name="q4" value="b" id="q4b"> All consumers who valued chocolate can buy chocolate.<br>
+          <input type="radio" name="q4" value="c" id="q4c"> The market is in equilibrium.<br>
+          <input type="radio" name="q4" value="d" id="q4d"> All producers call sell thier chocolate.<br>
+
+          <h3 id ="q5h"> Consumer surplus can be found by computing the area ___ the ___ curve and ___ the price.</h3>
+          <input type="radio" name="q5" value="a" id="q5a"> above; supply; below<br>
+          <input type="radio" name="q5" value="b" id="q5b"> below; demand; below<br>
+          <input type="radio" name="q5" value="c" id="q5c"> below; demand; above<br>
+          <input type="radio" name="q5" value="d" id="q5d"> below; supply; above<br>
+
+          <br><br>
+          <input type="submit" value= "Submit Answers">
+      </form>
+  </section>
+</div>
+{% endblock %}
