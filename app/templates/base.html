@@ -17,6 +17,9 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/utilities.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/content.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
     <title>{{ title }}</title>
 </head>
 <body>
@@ -27,11 +30,11 @@
             <h2 class="logo"><a href="/index">App name</a></h3>
               {% if current_user.is_anonymous %}
               <a href="{{ url_for('content') }}">Course</a></li>
-              <a href="{{ url_for('ds_quiz') }}">Quiz</a></li>
+              <a href="{{ url_for('quiz') }}">Quiz</a></li>
               {% else %}
               <a href="{{ url_for('dashboard') }}">Dashboard</a></li>
               <a href="{{ url_for('content') }}">Course</a></li>
-              <a href="{{ url_for('ds_quiz') }}">Quiz</a></li>
+              <a href="{{ url_for('quiz') }}">Quiz</a></li>
               {% endif %}
           </div>
             <nav>

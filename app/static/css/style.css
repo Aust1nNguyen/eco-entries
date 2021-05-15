@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
 
 :root {
-    --primary-color:#44bb58;
-    --secondary-color: #2f802c;
-    --dark-color: #002240;
+    --primary-color:#4766bb;
+    --secondary-color: #2a4aa0;
+    --dark-color: #2844bd;
     --light-color: #f4f4f4;
 }
 
@@ -81,7 +81,7 @@ code, pre{
 
 /* Showcase */
 .showcase{
-    height: 400px;
+    height: 500px;
     background-color: var(--primary-color);
     color: #fff;
     position: relative;
@@ -118,7 +118,7 @@ code, pre{
     text-align: center;
 }
 
-.stats .grid h3{
+.stats .grid a{
     font-size: 35px;
 }
 .stats .grid p{
@@ -141,40 +141,12 @@ code, pre{
     justify-self: center;
 }
 
-/* Dashboard */
-.userbar .flex {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 100px;
-    background-color: #44bb58;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 50px;
+.course-border{
+    padding: 0% 5%;
+    margin: 5% 5%;
+    border: 1px solid #6a46eb;
+    border-radius: 20px;
 }
-
-.userbar .menu{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-width: 300px;
-}
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    justify-items: center;
-}
-
-.card-single {
-    padding: 2rem;
-}
-
-.card-single li {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
 
 /* Footer */
 .footer .social a{

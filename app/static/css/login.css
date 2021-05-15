@@ -1,5 +1,82 @@
-.qheading {
-    font-size: 17px;
-    margin: 0 0 1px 0;
-    color: #666;
+body {
+    background-color: #F3EBF6;
+    font-family: 'Ubuntu', sans-serif;
+}
+.form_heads{
+    text-align: center;
+}
+
+.main-border{
+    padding: 0% 10%;
+    margin: 5% 15%;
+    border: 1px solid #6a46eb;
+    border-radius: 20px;
+}
+.login {
+    text-align: center;
+    padding-top: 40px;
+    color: #5e31da;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: bold;
+    font-size: 43px;
+}
+
+.remember_me{
+    display: block;
+    text-align: right;
+}
+input[type=text], input[type=password], input[type=submit] {
+    width: 100%;
+    color: rgb(38, 50, 56);
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    background: rgba(136, 126, 126, 0.04);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    box-sizing: border-box;
+    border: 2px solid rgba(0, 0, 0, 0.02);
+    margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 27px;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+form.form1 {
+    padding-top: 20px;
+}
+
+
+.un:focus, .pass:focus {
+    border: 2px solid rgba(0, 0, 0, 0.18) !important;
+    
+}
+
+input[type=submit] {
+    cursor: pointer;
+    width: 100%;
+    border-radius: 15px;
+    color: #fff;
+    background: linear-gradient(to right, #622ddd, #4d21b3);
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 13px;
+}
+
+
+a {
+    text-shadow: 0px 0px 3px rgba(117, 117, 117, 0.12);
+    color: #4766bb;
+    text-decoration: none
+}
+
+.questions{
+    text-align: justify;
+}
+
+@media (max-width: 600px) {
+    .main {
+        border-radius: 0px;
+    }
 }

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="econ_heading">
+    Microeconomics
+</h1>
+
+<div class="container">
+    <div class="titles ds">
+        <h2>DEMAND AND SUPPLY</h2>
+        <p>This quiz will test your knowledge on the fundamentals of demand and supply.
+            <a href="{{ url_for('ds_quiz') }}">Click to get started!</a> </p>
+    </div>
+    <div class="titles elast">
+        <h2>ELASTICITY</h2>
+        <p>
+            This quiz will test your knowledge on the price elasticity of demand, income elasticity of demand and cross elasticity of demand.
+            <a href="{{ url_for('elasticity_quiz') }}">Click to get started!</a>
+        </p>
+
+        </div> 
+    <div class="titles surplus">
+        <h2>CONSUMER AND PRODUCER SURPLUS</h2>
+        <p>
+            This quiz will test your knowledge on consumer and producer surplus and how this effects market efficiceny.
+            <a href="{{ url_for('surplus') }}">Click to get started!</a>
+        </p>
+
+        </div>
+  </div>
+
+<h1 class="econ_heading">
+    Macroeconomics
+</h1>
+
+<div class="container">
+    <div class="titles ">
+        <h2>GROSS DOMESTIC PRODUCT</h2>
+        <p>Supply and demand form the most fundamental concepts of economics. Demand and supply represent the relationship between the quantity of a commodity that producers wish to sell and the quantity that consumers wish to buy. <br> <br>
+            In this topic we will learn more about the law of demand and supply, and what causes a shift in the two curves.
+            <a href="demand_and_supply.html">Click here to learn more!</a> </p>
+    </div>
+    <div class="titles elast">
+        <h2>INFLATION</h2>
+        <p>
+            The law of demand states that a fall in the price of a good raises the quantity demanded. The price elasticity of demand measures how much the quantity demanded responds to a change in price. <br> <br>
+            In this topic we learn how to calculate price elasiticity of demand and supply and the determinates of elasticity.
+            <a href="elasticity.html">Click here to learn more!</a>
+        </p>
+
+        </div> 
+  </div>
+
+  {% endblock %}

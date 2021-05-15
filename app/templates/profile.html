@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="myprofile">
+    <i class="fas fa-user avatar" aria-hidden="true">
+    </i>
+    <a id="profilestar-wrapper">
+        <div id="mouseoverprofilestar" style="position:absolute;background-color:rgba(255,0,0,0);cursor:pointer;width:44px;height:44px;top:-12px;left:230px;z-index:9"></div>
+        <i id="profilestar" class="fas fa-star" aria-hidden="true"></i>
+        <span id="levelinstar">0</span>
+    </a><h2 id="profile-name"></h2><div class="profileprogress profiletut">
+        <span class="ps1">&nbsp;</span>
+        <span class="ps2">TUTORIALS:</span>
+        <span class="ps3">0 points</span>
+    </div>
+    <div class="profileprogress profilequiz">
+        <span class="ps1">&nbsp;</span>
+        <span class="ps2">QUIZZES:</span>
+        <span class="ps3">0 points</span>
+    </div><div class="profileprogress profileex">
+        <span class="ps1">&nbsp;</span><span class="ps2">EXERCISES:</span>
+        <span class="ps3">0 points</span>
+    </div><div class="profileprogress profiletot"><span class="ps1">&nbsp;</span>
+        <span class="ps2">TOTAL:</span><span class="ps3">0 points</span>
+    </div>
+</div>
+{%endblock%}
