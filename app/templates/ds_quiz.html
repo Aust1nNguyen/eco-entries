@@ -21,7 +21,7 @@
       <h1>Demand and Supply</h1>
   </header>
   <section>
-      <form action="#" name="quizForm" onsubmit="return submitAnswers()">
+      <form action="{{ url_for('handle_quiz', quizname='Demand and Supply', quizurl='ds') }}" onsubmit="return submitAnswers()">
           <h3 id ="q1h" class = "qheading">What is quantity demanded?</h3>
           <input type="radio" name="q1" value="a" id="q1a">a. The amount of the good that buyers are willing and able to purchase.
           <br>
@@ -57,8 +57,10 @@
 
           <br><br>
           <input type="submit" value= "Submit Answers">
-      </form>
+
       <div id="results"></div>
+      </form>
+      
   </section>
 </div>
 {% endblock %}

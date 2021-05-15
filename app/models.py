@@ -43,6 +43,10 @@ class User(UserMixin, db.Model):
     def enrol(self, course):
         self.courses.append(course)
 
+    # attempt a quiz
+    def attempt(self, quiz):
+        self.quizes.append(quiz)
+
     # check if user has already enrolled the course
     def is_enrolling(self, course):
         return self.courses.filter(
@@ -56,12 +60,12 @@ class User(UserMixin, db.Model):
                 enrolled_course.c.user_id == self.id)
     
     # return a list of course name
-    def enrolled_coursename(self):
-        courses = self.enrolled_course()
-        res = []
-        for course in courses:
-            res.append(course.coursename)
-        return res
+    # def enrolled_coursename(self):
+    #     courses = self.enrolled_course()
+    #     res = []
+    #     for course in courses:
+    #         res.append(course.coursename)
+    #     return res
 
     # return a list of completed entities
     def completed_quiz(self):
@@ -69,13 +73,14 @@ class User(UserMixin, db.Model):
                 Quiz.timestamp.desc()).filter_by(
                     user_id=self.id).all()
     
-    # return a list of quiz name and the quiz score
-    def completed_quizdata(self):
-        quizes = self.completed_quiz()
-        res = []
-        for quiz in quizes:
-            res.append((quiz.quizname, quiz.quiz_scoreoutofhundred))
-        return res
+    # # return a list of quiz name and the quiz score
+    # def completed_quizdata(self):
+    #     quizes = self.completed_quiz()
+    #     res = []
+    #     for quiz in quizes:
+    #         if quiz.quizname not in res:
+    #             res.append([quiz.quizname)
+    #     return res
 
     # represent data
     def __repr__ (self):
@@ -86,20 +91,22 @@ class Course(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     coursename = db.Column(db.String(128), index = True, unique = True)
+    courseurl = db.Column(db.String(128), index = True, unique = True)
 
     def __repr__(self):
-        return '<Course {}>'.format(self.id)
+        return '<Course {} url {}>'.format(self.coursename, self.courseurl)
 
 # Quiz model
 class Quiz(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     quizname = db.Column(db.String(128), index = True)
+    quizurl = db.Column(db.String(128), index = True)
     quiz_scoreoutofhundred = db.Column(db.Integer())
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
-        return '<Quiz {}>'.format(self.id)
+        return '<Quiz {} url {}>'.format(self.id, self.quizurl)
 

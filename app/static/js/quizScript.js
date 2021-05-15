@@ -10,10 +10,10 @@ function submitAnswers(){
     let q5 = document.forms["quizForm"]["q5"].value;
 
     // Validation
-    if (q1 == null || q1 == ""){
-        alert("You missed question 1");
-        return false;
-    }
+    // if (q1 == null || q1 == ""){
+    //     alert("You missed question 1");
+    //     return false;
+    // }
 
     for (i = 1; i <= total; i++){
         // Use eval to concat string q with value of i to get var q1, q2, etc
@@ -41,7 +41,7 @@ function submitAnswers(){
 
     // Display Results
     let results = document.getElementById("results");
-    results.innerHTML = "<h3>You scored <span>" + score + "</span> out of <span>" + total + "</span></h3>"
+    results.innerHTML = "<h3>You scored <span>" + score+ "</span> out of <span>" + total + "</span></h3>"
 
     // alert("You scored " + score + " out of " + total);
     

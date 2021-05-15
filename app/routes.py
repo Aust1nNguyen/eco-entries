@@ -11,10 +11,11 @@ import re
 # Intialize database values
 @event.listens_for(Course.__table__, 'after_create')
 def insert_initial_values(*args, **kwargs):
-    # Add courses
-    db.session.add(Course(coursename='ds'))
-    db.session.add(Course(coursename='elasticity'))
-    db.session.add(Course(coursename='surplus'))
+    
+    # Add available courses
+    db.session.add(Course(coursename='Demand and Supply', courseurl='ds'))
+    db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
+    db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
     db.session.commit()
 
 # Home view
@@ -75,8 +76,8 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    courses = current_user.enrolled_coursename()
-    quizes = current_user.completed_quizdata()
+    courses = current_user.enrolled_course()
+    quizes = current_user.completed_quiz()
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
 
 # Courses view
@@ -87,24 +88,42 @@ def content():
 @app.route('/ds', methods=['GET'])
 def ds():    
     if current_user.is_authenticated:
-        ds = Course.query.filter_by(coursename='ds').first()
-        current_user.enrol(ds)
+        course = Course.query.filter_by(coursename="Demand and Supply").first()
+        current_user.enrol(course)
         db.session.commit()
 
     return render_template("ds.html", title= "Demand and Supply")
 
 @app.route("/elasticity")
 def elasticity():
+    if current_user.is_authenticated:
+        course = Course.query.filter_by(coursename="Elasticity").first()
+        current_user.enrol(course)
+        db.session.commit()
+
     return render_template("elasticity.html", title= "Elasticity")
 
 @app.route("/surplus")
 def surplus():
+    if current_user.is_authenticated:
+        course = Course.query.filter_by(coursename="Consumer and Producer Surplus").first()
+        current_user.enrol(course)
+        db.session.commit()
+    
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
 # Quiz view
+@app.route('/handle_quiz/<quizname>/<quizurl>')
+@login_required
+def handle_quiz(quizname, quizurl):
+    quiz = Quiz(quizname=quizname, quizurl=quizurl, user_id=current_user.id)
+    current_user.attempt(quiz)
+    db.session.commit()
+    return redirect(url_for('dashboard'))
+
 @app.route('/ds_quiz')
 def ds_quiz():
-    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+    return render_template('ds_quiz.html', title='Quiz')
 
 # Run with debug mode
 if __name__ == '__main__':
