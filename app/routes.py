@@ -118,6 +118,10 @@ def ds_quiz():
 def elasticity_quiz():
     return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
 
+@app.route('/surplus_quiz')
+def surplus_quiz():
+    return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
+
 # Run with debug mode
 if __name__ == '__main__':
     app.run(debug=True)
