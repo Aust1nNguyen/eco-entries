@@ -12,10 +12,11 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 
 # Migration of database
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, render_as_batch=True)
 
 # Users login manager
 login = LoginManager(app)
+
 # require user to login
 login.login_view = 'login'
 

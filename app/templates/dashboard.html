@@ -5,24 +5,19 @@
     <div class="cards">
         <div class="card-single">
             <h3><b>Continue Learning</b></h3>
-                <ul>
-                    <li><a href="">Course 1</a></li>
-                    <li><a href="">Course 2</a></li>
-                </ul>
-           
-        </div>
-        <div class="card-single">
-            <h3><b>Completed course</b></h3>
             <ul>
-                <li><a href="">Course 1</a></li>
-                <li><a href="">Course 2</a></li>
+                {% for course in courses %}
+                <li><a href="{{ url_for(course) }}">{{ course }}</a></li>
+                {% endfor %}
             </ul>
+
         </div>
         <div class="card-single">
             <h3><b>Completed quiz</b></h3>
             <ul>
-                <li><a href="">Quiz 1</a></li>
-                <li><a href="">Quiz 2</a></li>
+                {% for quiz in quizes %}
+                <li><a href="{{ url_for(quiz) }}">{{ quiz }}</a></li>
+                {% endfor %}
             </ul>
         </div>
     </div>

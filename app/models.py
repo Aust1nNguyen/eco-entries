@@ -15,12 +15,6 @@ enrolled_course = db.Table('enrolled_course',
     db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
 )
 
-# track the user completed quiz
-completed_quiz = db.Table('completed_quiz',
-    db.Column('quiz_id', db.Integer, db.ForeignKey('quiz.id')),
-    db.Column('user_id', db.Integer, db.ForeignKey('user.id'))
-)
-
 # User model
 class User(UserMixin, db.Model):
 
@@ -34,16 +28,54 @@ class User(UserMixin, db.Model):
     scores = db.Column(db.Integer)
     # user's enrolled courses
     courses = db.relationship('Course', secondary=enrolled_course, lazy = 'dynamic')
-    # user's attempted quiz
-    quizes = db.relationship('Quiz', secondary=completed_quiz, lazy = 'dynamic')
+    # user's completed quiz
+    quizes = db.relationship('Quiz', backref='user', lazy = 'dynamic')
 
-    # hash plain password
+     # hash plain password
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
 
     # check hashed password
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
+
+    # enrol in a course
+    def enrol(self, course):
+        self.courses.append(course)
+
+    # check if user has already enrolled the course
+    def is_enrolling(self, course):
+        return self.courses.filter(
+            enrolled_course.c.user_id == self.id).filter(
+                enrolled_course.c.course_id == course.id).count() > 0
+    
+    # return a list of enrolled course entities
+    def enrolled_course(self):
+        return Course.query.join(
+            enrolled_course, (enrolled_course.c.course_id == Course.id)).filter(
+                enrolled_course.c.user_id == self.id)
+    
+    # return a list of course name
+    def enrolled_coursename(self):
+        courses = self.enrolled_course()
+        res = []
+        for course in courses:
+            res.append(course.coursename)
+        return res
+
+    # return a list of completed entities
+    def completed_quiz(self):
+        return Quiz.query.order_by(
+                Quiz.timestamp.desc()).filter_by(
+                    user_id=self.id).all()
+    
+    # return a list of quiz name and the quiz score
+    def completed_quizdata(self):
+        quizes = self.completed_quiz()
+        res = []
+        for quiz in quizes:
+            res.append((quiz.quizname, quiz.quiz_scoreoutofhundred))
+        return res
 
     # represent data
     def __repr__ (self):
@@ -54,7 +86,6 @@ class Course(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
     coursename = db.Column(db.String(128), index = True, unique = True)
-    timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
         return '<Course {}>'.format(self.id)
@@ -63,9 +94,12 @@ class Course(db.Model):
 class Quiz(db.Model):
 
     id = db.Column(db.Integer, primary_key = True)
-    quizname = db.Column(db.String(128), index = True, unique = True)
-    quizscore = db.Column(db.Integer())
+    quizname = db.Column(db.String(128), index = True)
+    quiz_scoreoutofhundred = db.Column(db.Integer())
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Quiz {}>'.format(self.id)
+

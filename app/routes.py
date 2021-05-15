@@ -2,10 +2,20 @@ from datetime import datetime
 from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
-from app.forms import LoginForm, SignUpForm
-from app.models import User
+from app.forms import LoginForm, SignUpForm, EmptyForm
+from app.models import User, Course, Quiz
 from werkzeug.urls import url_parse
+from sqlalchemy import event
 import re
+
+# Intialize database values
+@event.listens_for(Course.__table__, 'after_create')
+def insert_initial_values(*args, **kwargs):
+    # Add courses
+    db.session.add(Course(coursename='ds'))
+    db.session.add(Course(coursename='elasticity'))
+    db.session.add(Course(coursename='surplus'))
+    db.session.commit()
 
 # Home view
 @app.route('/')
@@ -61,40 +71,40 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
-# Quiz view
-@app.route('/ds_quiz')
-def ds_quiz():
-    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
-
-# Course 1 view
-@app.route('/courses')
-def courses():
-    return render_template("courses.html", title= "Courses")
-
-# Courses view
-@app.route('/content')
-def content():
-    if current_user.is_authenticated:
-        current_user.enroll_course()
-    return render_template("content.html", title= "Content")
-
 # Dashboard view
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    return render_template("dashboard.html", title='Dashboard')
+    courses = current_user.enrolled_coursename()
+    quizes = current_user.completed_quizdata()
+    return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
+
+# Courses view
+@app.route('/content')
+def content():
+    return render_template("content.html", title= "Content")
+
+@app.route('/ds', methods=['GET'])
+def ds():    
+    if current_user.is_authenticated:
+        ds = Course.query.filter_by(coursename='ds').first()
+        current_user.enrol(ds)
+        db.session.commit()
+
+    return render_template("ds.html", title= "Demand and Supply")
 
 @app.route("/elasticity")
 def elasticity():
     return render_template("elasticity.html", title= "Elasticity")
 
-@app.route("/ds")
-def ds():
-    return render_template("ds.html", title= "Demand and Supply")
-
 @app.route("/surplus")
 def surplus():
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
+
+# Quiz view
+@app.route('/ds_quiz')
+def ds_quiz():
+    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
 
 # Run with debug mode
 if __name__ == '__main__':
