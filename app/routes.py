@@ -1,32 +1,34 @@
 from datetime import datetime
 from flask import Flask, render_template, flash, redirect, url_for, request
 from flask_login import current_user, login_user, logout_user, login_required
-from app import app, db
+from app import app, db, models
 from app.forms import LoginForm, SignUpForm, EmptyForm
 from app.models import User, Course, Quiz
 from werkzeug.urls import url_parse
 from sqlalchemy import event
 
 # Intialize database values
-@event.listens_for(Course.__table__, 'after_create')
-def insert_initial_values(*args, **kwargs):
+# @event.listens_for(Course.__table__, 'after_create')
+# def insert_initial_values(*args, **kwargs):
     
-    # Add available courses
-    db.session.add(Course(coursename='Demand and Supply', courseurl='ds'))
-    db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
-    db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
-    db.session.commit()
-
-
+#     # Add available courses
+#     db.session.add(Course(coursename='Demand and Supply', courseurl='ds'))
+#     db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
+#     db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
+#     db.session.commit()
 
 
 # Home view
 @app.route('/')
 @app.route('/index')
 def home():
+    # Add available courses
+    if not models.is_init_course():
+        db.session.add(Course(coursename='Demand and Supply', courseurl='ds'))
+        db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
+        db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
+        db.session.commit()
     return render_template("index.html", title='Home Page')
-
-
 
 
 # Login view
@@ -135,7 +137,7 @@ def handle_quiz(quizname, quizurl):
     quiz = Quiz(quizname=quizname, quizurl=quizurl, user_id=current_user.id)
     current_user.attempt(quiz)
     db.session.commit()
-    return redirect(url_for('dashboard'))
+    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
     
 @app.route('/quiz')
 def quiz():

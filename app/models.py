@@ -99,7 +99,7 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     coursename = db.Column(db.String(128), index = True, unique = True)
     courseurl = db.Column(db.String(128), index = True, unique = True)
-
+    
     def __repr__(self):
         return '<Course {} url {}>'.format(self.coursename, self.courseurl)
 
@@ -117,3 +117,9 @@ class Quiz(db.Model):
     def __repr__(self):
         return '<Quiz {} url {}>'.format(self.id, self.quizurl)
 
+
+def is_init_course():
+    courses = Course.query.all()
+    if not courses:
+        return False
+    return True
