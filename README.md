@@ -1,69 +1,46 @@
 # EcoEntries
 
-A flask app provide users basic economic contents and quizes to attempt after finish the course
+A simple flask app to learn basic economic context
 
 ## Getting Started
 
-Activate the python virtual environment:  
-```$source venv/bin/activate```
+Activate the python virtual environment:
+`$source venv/bin/activate`
 
-To run the app:  
-```$flask run```
+To run the app:
+`$flask run`
 
-To stop the app:  
-```$^C```
+To stop the app:
+`$^C`
 
-To exit the environment:  
-```$deactivate```
+To exit the environment:
+`$deactivate`
 
 ### Prerequisites
 
 Requires python3, flask, venv, and sqlite
 
-### Launching
+### Installing
 
 Install python3, sqlite3
 
 1. Set up a virtual environment:
-    + create a virtual environment  
-    ```python3 -m venv venv```
-    + start the virtual environment  
-    ```source venv/bin/activate```
-    + install all dependecies  
-    ```pip install -r requirements.txt```
+    + create a virtual environment
+    `python3 -m venv venv`
+    + start the virtual environment
+    `source venv/bin/activate`
+    + install all dependecies
+    `pip install -r requirements.txt`
 
 2. Install sqlite
 
-    + In *nix  
-    ```sudo apt-get install sqlite```
-
+    + In *nix
+    `sudo apt-get install sqlite`
 3. Build the database
-```flask db init```
-
+`flask db init`
 4. Run flask app
-```flask run```
+`flask run`
+This should start the app running on localhost at port 5000, i.e. 
+[http://localhost:5000/index]
 
-This should start the app running on localhost at port 5000, i.e.  
-[http://localhost:5000/index](http://localhost:5000/index)
-
-### Running tests
-
-Firstly, run the flask app  
-```flask run```
-
-There are two tests for this app, unit test and system test
-
-1. Unit test
-To run unit tests, use command  
-```python3 unit_test.py```
-
-2. System test
-System test supports running test on Chrome using chromedriver. The newest chromedriver version is ran and test on Window. To download another version of chromedriver, follow this [link](https://sites.google.com/a/chromium.org/chromedriver/downloads)
-
-To run system tests, use command  
-```python3 system_test.py```
-
-### Acknowledgements
-
-+ [Flask Mega-Tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) by Miguel Grinberg
-+ [W3 schools](https://www.w3schools.com/)
+### Running the tests

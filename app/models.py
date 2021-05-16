@@ -80,14 +80,18 @@ class User(UserMixin, db.Model):
                 quizname.append(quiz.quizname)
         return res
     
-    # # return a list of quiz name and the quiz score
-    # def completed_quizdata(self):
-    #     quizes = self.completed_quiz()
-    #     res = []
-    #     for quiz in quizes:
-    #         if quiz.quizname not in res:
-    #             res.append([quiz.quizname)
-    #     return res
+    # return a list of quiz name and the quiz score
+    def completed_quizdata(self):
+        res = []
+        quizname = []
+        quizes = Quiz.query.order_by(
+                    Quiz.timestamp.desc()).filter_by(
+                        user_id=self.id).all()
+        for quiz in quizes:
+            if quiz.quizname not in quizname:
+                quizname.append(quiz.quizname)
+                res.append(quiz.quizname)
+        return res
 
     # represent data
     def __repr__ (self):
@@ -99,7 +103,7 @@ class Course(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     coursename = db.Column(db.String(128), index = True, unique = True)
     courseurl = db.Column(db.String(128), index = True, unique = True)
-    
+
     def __repr__(self):
         return '<Course {} url {}>'.format(self.coursename, self.courseurl)
 
@@ -117,9 +121,3 @@ class Quiz(db.Model):
     def __repr__(self):
         return '<Quiz {} url {}>'.format(self.id, self.quizurl)
 
-
-def is_init_course():
-    courses = Course.query.all()
-    if not courses:
-        return False
-    return True
