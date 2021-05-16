@@ -24,17 +24,8 @@ class SystemTest(unittest.TestCase):
              self.skipTest('Web browser not available')
         else:
             u1 = User(username='random', email='random@example.com', password_hash=123)
-            u2 = User(username='wayne', email='wayne@example.com')
-
-            c1 = Course(coursename='Demand and Supply', courseurl='ds')
-            c2 = Course(coursename='Elasticity', courseurl='elasticity')
-            c3 = Course(coursename='Surplus', courseurl='surplus')
-
-            users = [u1, u2]
-            courses = [c1, c2, c3]
-
-            db.session.add_all(users)
-            db.session.add_all(courses)
+           
+            db.session.add(u1)
             db.session.commit()
 
             self.driver.maximize_window()
@@ -43,9 +34,12 @@ class SystemTest(unittest.TestCase):
     def tearDown(self):
         if self.driver:
             self.driver.close()
-            db.session.query(User).delete()
-            db.session.query(Course).delete()
-            db.session.query(Quiz).delete()
+            u1 = db.session.query(User).filter_by(username='random').first()
+            u2 = db.session.query(User).filter_by(username='somebody').first()
+            
+            db.session.delete(u1)
+            if u2:
+                db.session.delete(u2)
             db.session.commit()
             db.session.remove()
 
@@ -117,6 +111,29 @@ class SystemTest(unittest.TestCase):
         # check if enrolled course in displayed
         ds = self.driver.find_element_by_xpath("//a[contains(@href, 'ds')]")
         self.assertIsNotNone(ds)
+
+        # Attempt a quiz
+         # view all quizes
+        self.driver.find_element_by_xpath("//a[contains(@href,'quiz')]").click()
+        self.driver.implicitly_wait(5)
+        time.sleep(1)
+
+        # choose a quiz
+        self.driver.find_element_by_xpath("//a[contains(@href,'elasticity_quiz')]").click()
+        self.driver.implicitly_wait(5)
+        time.sleep(1)
+
+        # do the quiz
+        self.driver.find_element_by_id('q1a').click()
+        time.sleep(1)
+        self.driver.find_element_by_id('q2c').click()
+        time.sleep(1)
+        self.driver.find_element_by_id('q3b').click()
+        time.sleep(1)
+        self.driver.find_element_by_id('q4d').click()
+        time.sleep(1)
+        self.driver.find_element_by_id('q5a').click()
+        time.sleep(1)
 
 
     def test_signup_invalid(self):
