@@ -26,6 +26,7 @@
 <div class="main-content">
     <header>
         <div class="user-wrapper">
+<<<<<<< HEAD
             <h4>{{ current_user.username }}</h4>            
         </div>
     </header>
@@ -47,6 +48,36 @@
                 <li><a href="{{ url_for(quiz.quizurl) }}">{{ quiz.quizname }}</a></li>
                 {% endfor %}
             </ul>
+=======
+            <h4>John Doe</h4>            
+        </div>
+    </header>
+
+    <main>
+        <div class="cards">
+            <div class="card-single">
+                <h3>Enrolled course</h3>
+                    <ul>
+                        <li><a href="">Course 1</a></li>
+                        <li><a href="">Course 2</a></li>
+                    </ul>
+               
+            </div>
+            <div class="card-single">
+                <h3>Completed course</h3>
+                <ul>
+                    <li><a href="">Course 1</a></li>
+                    <li><a href="">Course 2</a></li>
+                </ul>
+            </div>
+            <div class="card-single">
+                <h3>Completed quiz</h3>
+                <ul>
+                    <li><a href="">Quiz 1</a></li>
+                    <li><a href="">Quiz 2</a></li>
+                </ul>
+            </div>
+>>>>>>> fbcb2a91b06c76738f511d9904c2a0ef40d1345d
         </div>
     </main>
 </div>
