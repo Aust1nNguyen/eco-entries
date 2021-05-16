@@ -14,11 +14,11 @@ class SystemTest(unittest.TestCase):
         db.init_app(app)
         db.create_all()
 
-        # chromedriver = os.path.join(basedir, 'drivers', 'chromedriver.exe')
-        # self.driver = webdriver.Chrome(executable_path=chromedriver)
+        chromedriver = os.path.join(basedir, 'drivers', 'chromedriver.exe')
+        self.driver = webdriver.Chrome(executable_path=chromedriver)
 
-        geckodriver = os.path.join(basedir, 'drivers', 'geckodriver.exe')
-        self.driver = webdriver.Firefox(executable_path=geckodriver)
+        # geckodriver = os.path.join(basedir, 'drivers', 'geckodriver.exe')
+        # self.driver = webdriver.Firefox(executable_path=geckodriver)
         
         if not self.driver:
              self.skipTest('Web browser not available')
