@@ -29,17 +29,20 @@
             <div class="grid grid-3 text-center my-4">
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Courses</h3>
+                    <br>
+                    <a href="{{ url_for('content') }}">Courses</a>
                     <p class="text-top m-3">We offer a range of different courses in micro and macro economics.</p>
                 </div>
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Quizzes</h3>
+                    <br>
+                    <a href="{{ url_for('login') }}">Quizzes</a>
                     <p class="text-top m-3">Take our quizzes to test yourself on your knowledge.</p>
                 </div>
                 <div>
                     <i class="fas fa-infinity fa-3x"></i>
-                    <h3>Feedback</h3>
+                    <br>
+                    <a href="{{ url_for('login') }}">Feedback</a>
                     <p class="text-top m-3">Receive feedback to understand where you can improve.</p>
                 </div>
             </div>
@@ -53,7 +56,7 @@
                 <h2 class="lg">Microeconomics</h2>
                 <p class="lead my-1">Microeconomics is a study of the behavior of individuals and firms in making decisions regarding the 
                     allocation of scarce resources and the interactions among these individuals and firms.</p>
-                <a href="features.html" class="btn btn-dark">Read More</a>
+                <a href="{{ url_for('content') }}" class="btn btn-dark">Learn More</a>
             </div>
             <img src="static/images/stationery.jpeg" alt="">
         </div>
@@ -67,7 +70,7 @@
                 <h2 class="lg">Macroeconomics</h2>
                 <p class="lead my-1">Macroeconomics is a branch of economics dealing with the 
                     performance, structure, behavior, and decision-making of an economy as a whole.</p>
-                <a href="features.html" class="btn btn-dark">Read More</a>
+                <a href="{{ url_for('content') }}" class="btn btn-dark">Learn More</a>
             </div>
         </div>
     </section>

@@ -1,0 +1,71 @@
+/* Dashboard */
+.sidebar {
+    width: 300px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    padding: 6rem 4rem;
+    background-color: var(--main-color);
+
+}
+
+.sidebar-menu li {
+    width: 100%;
+    margin-bottom: 1.5rem;
+}
+
+.sidebar-menu a {
+    display: block;
+    color: rgb(0, 0, 0);
+    font-size: 1rem
+}
+
+.sidebar-menu a.active {  
+    color: #4766bb;
+    font-weight: 700;
+}
+
+.main-content {
+    margin-left: 300px;
+}
+
+
+header h2 {
+    color: #222;
+}
+
+header label span {
+    font-size: 1.7rem;
+    padding-right: 1rem;
+}
+
+.user-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+main {
+    margin-top: 10px;
+    padding: 1rem 1.5rem;
+    background: #f0f0f0;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+}
+
+.card-single {
+    padding: 2rem;
+}
+
+.card-single li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.myprofile{
+    text-align: center;
+}

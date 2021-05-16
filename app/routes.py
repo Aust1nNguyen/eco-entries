@@ -6,7 +6,6 @@ from app.forms import LoginForm, SignUpForm, EmptyForm
 from app.models import User, Course, Quiz
 from werkzeug.urls import url_parse
 from sqlalchemy import event
-import re
 
 # Intialize database values
 @event.listens_for(Course.__table__, 'after_create')
@@ -17,6 +16,7 @@ def insert_initial_values(*args, **kwargs):
     db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
     db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
     db.session.commit()
+
 
 # Home view
 @app.route('/')
@@ -72,6 +72,7 @@ def logout():
     logout_user()
     return redirect(url_for('login'))
 
+
 # Dashboard view
 @app.route('/dashboard')
 @login_required
@@ -80,12 +81,17 @@ def dashboard():
     quizes = current_user.completed_quiz()
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
 
+@app.route("/profile")
+def profile():
+    return render_template("profile.html", title= "Profile")
+
+
 # Courses view
 @app.route('/content')
 def content():
     return render_template("content.html", title= "Content")
 
-@app.route('/ds', methods=['GET'])
+@app.route('/ds')
 def ds():    
     if current_user.is_authenticated:
         course = Course.query.filter_by(coursename="Demand and Supply").first()
@@ -112,6 +118,7 @@ def surplus():
     
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
+
 # Quiz view
 @app.route('/handle_quiz/<quizname>/<quizurl>')
 @login_required
@@ -120,10 +127,22 @@ def handle_quiz(quizname, quizurl):
     current_user.attempt(quiz)
     db.session.commit()
     return redirect(url_for('dashboard'))
+    
+@app.route('/quiz')
+def quiz():
+    return render_template('quiz.html', title='Quiz', form='quizForm')
 
 @app.route('/ds_quiz')
 def ds_quiz():
-    return render_template('ds_quiz.html', title='Quiz')
+    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/elasticity_quiz')
+def elasticity_quiz():
+    return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/surplus_quiz')
+def surplus_quiz():
+    return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
 
 # Run with debug mode
 if __name__ == '__main__':

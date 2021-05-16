@@ -69,9 +69,16 @@ class User(UserMixin, db.Model):
 
     # return a list of completed entities
     def completed_quiz(self):
-        return Quiz.query.order_by(
-                Quiz.timestamp.desc()).filter_by(
-                    user_id=self.id).all()
+        res = []
+        quizname = []
+        quizes = Quiz.query.order_by(
+                    Quiz.timestamp.desc()).filter_by(
+                        user_id=self.id).all()
+        for quiz in quizes:
+            if quiz.quizname not in quizname:
+                res.append(quiz)
+                quizname.append(quiz.quizname)
+        return res
     
     # # return a list of quiz name and the quiz score
     # def completed_quizdata(self):
