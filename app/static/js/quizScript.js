@@ -25,8 +25,18 @@ function submitAnswers(){
     }
 
     // Set Correct Answers
-    var answers = ["a", "b", "c", "d", "a"];
-
+    var answers = [];
+    var id = location.href.split("/").slice(-1);
+    console.log(id);
+    if(id == "ds_quiz"){
+        var answers = ["b", "c", "c", "b", "c"];
+    }
+    if(id == "elasticity_quiz"){
+        var answers = ["c", "a", "a", "c", "a"];
+    }
+    if(id == "surplus_quiz"){
+        var answers = ["a", "c", "b", "c", "c"];
+    }
     // Check Answers
     for (i = 1; i <= total; i++){
         if (eval("q" + i) == answers[i-1]){
@@ -63,14 +73,14 @@ function submitAnswers(){
 function send_score() {
     var script = document.createElement('script');
     script.src = 'https://code.jquery.com/jquery-3.6.0.js';
-    script.type = 'text/javascript';
+    contentType= "application/json; charset=utf-8",
     document.getElementsByTagName('head')[0].appendChild(script);
 
     console.log("got here");
     var id = location.href.split("/").slice(-1);
-    var id = location.href.slice(0, -5);
     var filename = "Demand and Supply";
     var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
+    console.log(url);
     var data = score/total*100;
     $.post(url, data);
     return false;

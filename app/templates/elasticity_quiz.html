@@ -14,7 +14,7 @@
   </style>
 </head>
 
-<div id="container" class= "main-border">
+<div id="elasticity_quiz" class="main-border">
   <header>
       <h1>Elasticity</h1>
   </header>
@@ -29,6 +29,7 @@
           <br>
           <input type="radio" name="q1" value="d" id="q1d"> A change in demand affects the price of a product.<br>
 
+          
           <div id="1results"></div>
           <h3 id ="q2h">Following a small increase in the price of a daily newspaper, the revenue from sales of this newspaper stays constant. This means that price elasticity of demand is:</h3>
           <input type="radio" name="q2" value="a" id="q2a"> Unit (unitary) elastic and equal to -1.<br>
@@ -62,6 +63,9 @@
           <br><br>
           <input type="submit" value= "Submit Answers">
       </form>
+      <div id ="return"></div>
+      
+      <form action="#" name="quizForm" onsubmit="return send_score()"><input type="submit" value="Return"></form>
   </section>
 </div>
 {% endblock %}
