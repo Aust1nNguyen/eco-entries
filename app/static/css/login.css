@@ -1,5 +1,9 @@
 body {
+<<<<<<< HEAD
     background-color: #ffffff;
+=======
+    background-color: #fff;
+>>>>>>> feature-css
     font-family: 'Ubuntu', sans-serif;
 }
 .form_heads{

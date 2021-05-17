@@ -21,7 +21,9 @@
       <h1>Demand and Supply</h1>
   </header>
   <section>
-      <form action="{{ url_for('handle_quiz', quizname='Demand and Supply', quizurl='ds') }}" onsubmit="return submitAnswers()">
+    
+      <div id="results"></div>
+      <form action="#" name="quizForm" onsubmit="return submitAnswers()">
           <h3 id ="q1h" class = "qheading">What is quantity demanded?</h3>
           <span class="questions"> <input type="radio" name="q1" value="a" id="q1a">The amount of the good that buyers are willing and able to purchase.</span> 
           <br>
@@ -30,18 +32,21 @@
           <br>
           <input type="radio" name="q1" value="d" id="q1d"> None of the above.<br>
 
+          <div id="1results"></div>
           <h3 id ="q2h" class = "qheading">A movement along the demand curve is due to</h3>
           <input type="radio" name="q2" value="a" id="q2a">A change in income.<br>
           <input type="radio" name="q2" value="b" id="q2b">A change in the price of a related good.<br>
           <input type="radio" name="q2" value="c" id="q2c">A change in the price of a good.<br>
           <input type="radio" name="q2" value="d" id="q2d">An increase in the demand of a good.<br>
 
+          <div id="2results"></div>
           <h3 id ="q3h" class = "qheading">If the demand for a good falls when income falls, the good is called</h3>
           <input type="radio" name="q3" value="a" id="q3a">An inferior good<br>
           <input type="radio" name="q3" value="b" id="q3b">A substitute good<br>
           <input type="radio" name="q3" value="c" id="q3c">A normal good<br>
           <input type="radio" name="q3" value="d" id="q3d">None of the above<br>
 
+          <div id="3results"></div>
           <h3 id ="q4h" class = "qheading"> To reach a perfectly competitve market what two characterisitcs must the market have?</h3>
           <input type="radio" name="q4" value="a" id="q4a">The goods offered for sale are homogenous.
           <br>
@@ -49,17 +54,20 @@
           <input type="radio" name="q4" value="c" id="q4c">There is one seller who operates as a monopoly and determines the market price.<br>
           <input type="radio" name="q4" value="d" id="q4d">Both a and b are correct.<br>
 
+          <div id="4results"></div>
           <h3 id ="q5h" class = "qheading">If a fast food company automated their dicing operation and therefore require less workers, what will happen to the supply curve? </h3>
           <input type="radio" name="q5" value="a" id="q5a">There will be a movement up along the supply curve increasing the supply of the product.<br>
           <input type="radio" name="q5" value="b" id="q5b">There will be a movement down along the supply curve decreasing the supply of the product.<br>
           <input type="radio" name="q5" value="c" id="q5c">The supply curve will shift to the right due to an increase in quantity supplied.<br>
           <input type="radio" name="q5" value="d" id="q5d">Both a and c are correct.<br>
 
+          <div id="5results"></div>
           <br><br>
           <input type="submit" value= "Submit Answers">
-
-      <div id="results"></div>
       </form>
+      <div id ="return"></div>
+      
+      <form action="#" name="quizForm" onsubmit="return send_score()"><input type="submit" value="Return"></form>
       
   </section>
 </div>
