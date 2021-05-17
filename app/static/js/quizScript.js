@@ -64,9 +64,9 @@ function send_score() {
     script.type = 'text/javascript';
     document.getElementsByTagName('head')[0].appendChild(script);
 
-    console.log("got here")
+    console.log("got here");
     var id = location.href.split("/").slice(-1);
-    var id = location.href.slice(0, -5)  
+    var id = location.href.slice(0, -5);
     var filename = "Demand and Supply";
     var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
     var data = score/total*100;
