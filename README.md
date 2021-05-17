@@ -68,7 +68,9 @@ There are two tests for this app, unit test and system test
 
 2. System test
   System test supports running test on Chrome using chromedriver. The newest chromedriver version is ran and test on Window. To download another version of chromedriver, follow this link  
-    [https://sites.google.com/a/chromium.org/chromedriver/downloads](https://sites.google.com/a/chromium.org/chromedriver/downloads)
+    [https://sites.google.com/a/chromium.org/chromedriver/downloads](https://sites.google.com/a/chromium.org/chromedriver/downloads)  
+  
+  To test on Mac or Linux, simply uncomment the chromedriver part in the system_test.py  
 
   To run system tests, use command  
     ```python3 system_test.py```
