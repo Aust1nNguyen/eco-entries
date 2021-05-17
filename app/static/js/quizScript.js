@@ -41,14 +41,16 @@ function submitAnswers(){
     for (i = 1; i <= total; i++){
         if (eval("q" + i) == answers[i-1]){
             var wes = document.getElementById("q"+i+"h");
-            wes.classList.add("correct");
+            let correction = document.getElementById(i+"results");
+            correction.innerHTML = "<h3>You selected <span>" + eval("q" + i) + "</span>. The correct answer was <span>" + answers[i-1] +"</span></h3>" 
+            correction.classList.add("correct");
             score++;
         }
         if(eval("q" + i) != answers[i-1]) { 
             var wes = document.getElementById("q"+i+"h");
-            wes.classList.add("wrong");
             let correction = document.getElementById(i+"results");
             correction.innerHTML = "<h3>You selected <span>" + eval("q" + i) + "</span>. The correct answer was <span>" + answers[i-1] +"</span></h3>" 
+            correction.classList.add("wrong");
         }
     }
 
