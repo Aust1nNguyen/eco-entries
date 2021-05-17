@@ -2,6 +2,8 @@
 *.db
 *.sql
 *.out
+.DS_Store
+migrations/*
 virtual-environment/*
 pair-up-venv/*
 .vscode/*

@@ -8,10 +8,10 @@
                 <a href="" class="active">Dashboard</a>
             </li>
             <li>
-                <a href="">Learn</a>
+                <a href="{{ url_for('content') }}">Learn</a>
             </li>
             <li>
-                <a href="">Quiz</a>
+                <a href="{{ url_for('quiz') }}">Quiz</a>
             </li>
             <li>
                 <a href="">Progress</a>
@@ -50,5 +50,4 @@
         </div>
     </main>
 </div>
-
 {% endblock %}

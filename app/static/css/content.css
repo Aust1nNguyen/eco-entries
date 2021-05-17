@@ -26,3 +26,18 @@
     width: 50%;
     
 }
+
+
+
+
+
+
+
+
+/* PROFILE */
+
+.myprofile > img{
+    width: 25%;
+    height: 30%;
+    margin: 20px;
+}
