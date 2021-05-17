@@ -11,10 +11,10 @@ function submitAnswers(){
     let q5 = document.forms["quizForm"]["q5"].value;
 
     // Validation
-     if (q1 == null || q1 == ""){
-         alert("You missed question 1");
-         return false;
-     }
+    if (q1 == null || q1 == ""){
+        alert("You missed question 1");
+        return false;
+    }
 
     for (i = 1; i <= total; i++){
         // Use eval to concat string q with value of i to get var q1, q2, etc
@@ -31,14 +31,16 @@ function submitAnswers(){
     for (i = 1; i <= total; i++){
         if (eval("q" + i) == answers[i-1]){
             var wes = document.getElementById("q"+i+"h");
-            wes.classList.add("correct");
+            let correction = document.getElementById(i+"results");
+            correction.innerHTML = "<h3>You selected <span>" + eval("q" + i) + "</span>. The correct answer was <span>" + answers[i-1] +"</span></h3>" 
+            correction.classList.add("correct");
             score++;
         }
         if(eval("q" + i) != answers[i-1]) { 
             var wes = document.getElementById("q"+i+"h");
-            wes.classList.add("wrong");
             let correction = document.getElementById(i+"results");
             correction.innerHTML = "<h3>You selected <span>" + eval("q" + i) + "</span>. The correct answer was <span>" + answers[i-1] +"</span></h3>" 
+            correction.classList.add("wrong");
         }
     }
 

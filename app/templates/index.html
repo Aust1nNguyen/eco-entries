@@ -22,7 +22,20 @@
         </div>
     </section>
 
-    <!--Stats-->
+    <section class="parent">
+    <div class="res-circle">
+        <div class="circle-txt">DEMAND AND SUPPLY</div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt">ELASTICITY</div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt">CONSUMER AND PRODUCER SURPLUS</div> 
+    </div>
+
+    </section>
+        
+    <!--Stats
     <section class="stats">
         <div class="container">
 
@@ -48,8 +61,8 @@
             </div>
         </div>
     </section>
-
-    <!--Student-->
+--->
+    <!--Student
     <section class="student bg-primary my-2 py-2">
         <div class="container grid">
             <div class="text-center">
@@ -61,17 +74,28 @@
             <img src="static/images/stationery.jpeg" alt="">
         </div>
     </section>
+    -->
 
-    <!--Teacher-->
-    <section class="teacher my-2 py-2">
-        <div class="container grid">
-            <img src="static/images/laptop.jpg" alt="">
-            <div class="text-center">
-                <h2 class="lg">Macroeconomics</h2>
-                <p class="lead my-1">Macroeconomics is a branch of economics dealing with the 
-                    performance, structure, behavior, and decision-making of an economy as a whole.</p>
-                <a href="{{ url_for('content') }}" class="btn btn-dark">Learn More</a>
+    <!--Footer-->
+   <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>App name</h1>
+                <p>Copyright &copy; 2021</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Docs</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#" class="fab fa-github fa-2x"></a>
+                <a href="#" class="fab fa-facebook fa-2x"></a>
+                <a href="#" class="fab fa-instagram fa-2x"></a>
+                <a href="#" class="fab fa-linkedin fa-2x"></a>
             </div>
         </div>
-    </section>
+    </footer>
 {% endblock %}
