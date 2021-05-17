@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div class= "course-border">
 <h1><b>
     Price Elasticity of Demand
     </b> </h1>
@@ -11,8 +12,9 @@
     We calculate price elasticity ED based on percentage change because we are interested in the relationship between the proportionate changes in Quantity and Price:
     </p1>
     <br> <br>
+    <div style="width: 60%;">
     <img src="/static/images/equation.png" alt="elasticity equation">
-    <br> <br>
+    </div>
     <p2>Demand is elastic when the elasticity is greater than 1, so that quantity moves proportionately more than the price, which means consumers are quite responsive to changes in price. <br>
     Demand is inelastic when the elasticity is less than 1, so that quantity moves proportionately less than the price which means consumers are not very responsive to changes in price.<br> 
     If the elasticity is exactly 1, the percentage change in quantity equals the percentage change in price, therefore demand is said to have unit elasticity. 
@@ -39,8 +41,9 @@
     </h1>
     <p4>Income elasticity of demand is a measure of how much the quantity demanded of a good responds to a change in consumers’ income.
     <br> <br>
+    <div style="width: 60%;">
     <img src="/static/images/equation2.png" alt="income elasticity">
-    <br> <br>
+    </div>
     Because quantity demanded and income have a positive relationship, normal goods have positive income elasticities.
     For inferior goods because quantity demanded and income move in opposite directions, they have negative income elasticities. 
     <br> <br>
@@ -48,5 +51,6 @@
     0 < Eᵢ < 1: normal goods/services, positive relationship between income and quantity demanded, but demand is not ‘very responsive’ to changes in income. <br>
     Eᵢ > 1: luxury goods/services, positive relationship between income and quantity demanded, and demand is highly responsive to changes in income.<br>
     </p4>
-
+    <br>
+</div>
 {% endblock %}
