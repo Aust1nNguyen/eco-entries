@@ -131,13 +131,13 @@ def surplus():
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
 # Quiz view
-@app.route('/handle_quiz/<quizname>/<quizurl>')
+@app.route('/handle_quiz/<quizname>/<quizurl>/<quiz_scoreoutofhundred>')
 @login_required
-def handle_quiz(quizname, quizurl):
-    quiz = Quiz(quizname=quizname, quizurl=quizurl, user_id=current_user.id)
+def handle_quiz(quizname, quizurl, quiz_scoreoutofhundred):
+    quiz = Quiz(quizname=quizname, quizurl=quizurl, user_id=current_user.id, quiz_scoreoutofhundred=quiz_scoreoutofhundred)
     current_user.attempt(quiz)
     db.session.commit()
-    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+    return redirect(url_for('dashboard'))
     
 @app.route('/quiz')
 def quiz():
