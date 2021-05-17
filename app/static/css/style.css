@@ -239,4 +239,9 @@ code, pre{
         padding: 10px;
         background-color: rgba(0, 0, 0, 0.1);
     }
+    /* Hide the link that should open and close the topnav on small screens */
+    .navbar .icon {
+        display: none;
+    }
+  
 }

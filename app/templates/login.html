@@ -7,10 +7,18 @@
         {{ form.hidden_tag() }}
         
         <p class="form_heads">{{ form.username.label }}</p> 
-        <div class="hi"> {{ form.username(size=32) }}</div>
+        <p>{{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
 
         <p class="form_heads">{{ form.password.label }}</p>
-        <div>{{ form.password(size=32) }}</div>
+        <p>{{ form.password(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
         <span class="remember_me">{{ form.remember_me() }} {{ form.remember_me.label }}</span>
         <p class="random">{{ form.submit() }}</p>
     </form>
