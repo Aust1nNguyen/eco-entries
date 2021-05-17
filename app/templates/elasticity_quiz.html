@@ -22,7 +22,7 @@
   </header>
   <section>
       <div id="results"></div>
-      <form action="#" name="quizForm" onsubmit="return submitAnswers()">
+      <form action="{{ url_for('elasticity_quiz') }}" name="quizForm" method="POST" onsubmit=submitAnswers()>
           <h3 id ="q1h">Price elasticity of demand shows how:</h3>
           <input type="radio" name="q1" value="a" id="q1a"> A change in price affects the level of profits for a firm. 
           <br>

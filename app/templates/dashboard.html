@@ -44,7 +44,7 @@
             <h3><b>Completed quiz</b></h3>
             <ul>
                 {% for quiz in quizes %}
-                <li><a href="{{ url_for(quiz.quizurl) }}">{{ quiz.quizname }}</a></li>
+                <li><a href="{{ url_for(quiz.quizurl) }}"> {{ quiz.quizname }}: {{ quiz.quiz_scoreoutofhundred }}</a></li>
                 {% endfor %}
             </ul>
         </div>

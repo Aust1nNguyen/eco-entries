@@ -131,29 +131,77 @@ def surplus():
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
 # Quiz view
-@app.route('/handle_quiz/<quizname>/<quizurl>/<quiz_scoreoutofhundred>')
+@app.route('/handle_quiz/<quizurl>')
 @login_required
-def handle_quiz(quizname, quizurl, quiz_scoreoutofhundred):
-    quiz = Quiz(quizname=quizname, quizurl=quizurl, user_id=current_user.id, quiz_scoreoutofhundred=quiz_scoreoutofhundred)
-    current_user.attempt(quiz)
-    db.session.commit()
+def handle_quiz(quizurl):
     return redirect(url_for('dashboard'))
     
 @app.route('/quiz')
 def quiz():
     return render_template('quiz.html', title='Quiz', form='quizForm')
 
-@app.route('/ds_quiz')
+@app.route('/ds_quiz', methods=['GET', 'POST'])
 def ds_quiz():
-    return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+    answers = ["b", "c", "c", "b", "c"]
+    
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
+        questions = [q1, q2, q3, q4, q5]
 
-@app.route('/elasticity_quiz')
+        score = models.quiz_score(questions, answers)
+
+        quiz = Quiz(quizname='Demand and Supply', quizurl='ds', quiz_scoreoutofhundred=score)
+        current_user.attempt(quiz)
+        db.session.commit()
+        return redirect(url_for('dashboard'))
+    elif request.method == 'GET':
+        return render_template('ds_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/elasticity_quiz', methods=['GET', 'POST'])
 def elasticity_quiz():
-    return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
+    answers = ["c", "a", "a", "c", "a"]
+    
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
+        questions = [q1, q2, q3, q4, q5]
 
-@app.route('/surplus_quiz')
+        score = models.quiz_score(questions, answers)
+
+        quiz = Quiz(quizname='Elasticity', quizurl='elasticity', quiz_scoreoutofhundred=score)
+        current_user.attempt(quiz)
+        db.session.commit()
+        return redirect(url_for('dashboard'))
+    elif request.method == 'GET':
+        return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/surplus_quiz', methods=['GET', 'POST'])
 def surplus_quiz():
-    return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
+    answers = ["a", "c", "b", "c", "c"]
+    
+    if request.method == 'POST':
+        q1 = request.form['q1']
+        q2 = request.form['q2']
+        q3 = request.form['q3']
+        q4 = request.form['q4']
+        q5 = request.form['q5']
+        questions = [q1, q2, q3, q4, q5]
+
+        score = models.quiz_score(questions, answers)
+
+        quiz = Quiz(quizname='Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
+        current_user.attempt(quiz)
+        db.session.commit()
+        return redirect(url_for('dashboard'))
+    elif request.method == 'GET':
+        return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
 
 # Run with debug mode
 if __name__ == '__main__':

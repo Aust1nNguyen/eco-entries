@@ -119,21 +119,26 @@ class SystemTest(unittest.TestCase):
         time.sleep(1)
 
         # choose a quiz
-        self.driver.find_element_by_xpath("//a[contains(@href,'elasticity_quiz')]").click()
+        self.driver.find_element_by_xpath("//a[contains(@href,'ds_quiz')]").click()
         self.driver.implicitly_wait(5)
         time.sleep(1)
 
         # do the quiz
-        self.driver.find_element_by_id('q1a').click()
+        # answers = ["b", "c", "c", "b", "c"]
+        self.driver.find_element_by_id('q1b').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q2c').click()
+        self.driver.find_element_by_id('q2b').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q3b').click()
+        self.driver.find_element_by_id('q3c').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q4d').click()
+        self.driver.find_element_by_id('q4a').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q5a').click()
+        self.driver.find_element_by_id('q5c').click()
         time.sleep(1)
+
+        # check if the feedback return
+        # result = self.driver.find_element_by_id('submit')
+        # self.assertEqual(result.get_attribute('innerHTML'), 'Your result is 3 out of 5')
 
 
     def test_signup_invalid(self):
