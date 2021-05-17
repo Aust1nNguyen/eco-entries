@@ -25,8 +25,18 @@ function submitAnswers(){
     }
 
     // Set Correct Answers
-    var answers = ["a", "b", "c", "d", "a"];
-
+    var answers = [];
+    var id = location.href.split("/").slice(-1);
+    console.log(id);
+    if(id == "ds_quiz"){
+        var answers = ["b", "c", "c", "b", "c"];
+    }
+    if(id == "elasticity_quiz"){
+        var answers = ["c", "a", "a", "c", "a"];
+    }
+    if(id == "surplus_quiz"){
+        var answers = ["a", "c", "b", "c", "c"];
+    }
     // Check Answers
     for (i = 1; i <= total; i++){
         if (eval("q" + i) == answers[i-1]){
