@@ -148,9 +148,54 @@ code, pre{
     border-radius: 20px;
 }
 
+
+
+
+/* CIRCLE */
+/* (A) PERCENTAGE WIDTH & 50% BORDER RADIUS */
+.res-circle {
+    width: 20%;
+    border-radius: 50%;
+    background-image: radial-gradient(white, rgb(71, 102, 187));
+    padding: 30px;
+    margin: 50px;
+    position: relative;
+    display: flex; /* or inline-flex */
+    align-items: center; 
+    justify-content: center;
+  }
+.parent {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+}
+  /* (B) USE ::AFTER TO CREATE MATCHING HEIGHT */
+  /* Credits - https://spin.atomicobject.com/2015/07/14/css-responsive-square/ */
+  .res-circle::after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+
+  }
+/* (E) TEXT BLOCK */  
+.circle-txt {
+    /* (E1) CENTER TEXT IN CIRCLE */
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
 /* Footer */
 .footer .social a{
-    margin: 0 10px;
+    margin: 0 30px;
+
+}
+.footer> nav{
+    margin: 30px;
+    padding: 30px ;
 }
 
 /* Animations */

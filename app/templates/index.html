@@ -22,25 +22,38 @@
         </div>
     </section>
 
-    <!--Stats-->
+    <section class="parent">
+    <div class="res-circle">
+        <div class="circle-txt"> <a href="{{ url_for('ds') }}"> DEMAND AND SUPPLY</a></div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt"><a href="{{ url_for('elasticity') }}"> ELASTICITY</a></div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt"><a href="{{ url_for('surplus') }}">CONSUMER AND <br> PRODUCER SURPLUS</a></div> 
+    </div>
+
+    </section>
+        
+    <!--Stats
     <section class="stats">
         <div class="container">
 
             <div class="grid grid-3 text-center my-4">
                 <div>
-                    <i class="fas fa-infinity fa-3x"></i>
+                    <i class="fas fa-book"></i>
                     <br>
                     <a href="{{ url_for('content') }}">Courses</a>
                     <p class="text-top m-3">We offer a range of different courses in micro and macro economics.</p>
                 </div>
                 <div>
-                    <i class="fas fa-infinity fa-3x"></i>
+                    <i class="fas fa-question"></i>
                     <br>
                     <a href="{{ url_for('login') }}">Quizzes</a>
                     <p class="text-top m-3">Take our quizzes to test yourself on your knowledge.</p>
                 </div>
                 <div>
-                    <i class="fas fa-infinity fa-3x"></i>
+                    <i class="fas fa-comment-dots"></i>
                     <br>
                     <a href="{{ url_for('login') }}">Feedback</a>
                     <p class="text-top m-3">Receive feedback to understand where you can improve.</p>
@@ -48,8 +61,8 @@
             </div>
         </div>
     </section>
-
-    <!--Student-->
+--->
+    <!--Student
     <section class="student bg-primary my-2 py-2">
         <div class="container grid">
             <div class="text-center">
@@ -61,17 +74,27 @@
             <img src="static/images/stationery.jpeg" alt="">
         </div>
     </section>
+    -->
 
-    <!--Teacher-->
-    <section class="teacher my-2 py-2">
-        <div class="container grid">
-            <img src="static/images/laptop.jpg" alt="">
-            <div class="text-center">
-                <h2 class="lg">Macroeconomics</h2>
-                <p class="lead my-1">Macroeconomics is a branch of economics dealing with the 
-                    performance, structure, behavior, and decision-making of an economy as a whole.</p>
-                <a href="{{ url_for('content') }}" class="btn btn-dark">Learn More</a>
+    <!--Footer-->
+   <footer class="footer bg-dark py-5">
+        <div class="container grid grid-3">
+            <div>
+                <h1>App name</h1>
+                <p>Copyright &copy; 2021</p>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">Courses</a></li>
+                    <li><a href="#">Docs</a></li>
+                </ul>
+            </nav>
+            <div class="social">
+                <a href="#" class="fab fa-facebook fa-2x"></a>
+                <a href="#" class="fab fa-instagram fa-2x"></a>
+                <a href="#" class="fab fa-linkedin fa-2x"></a>
             </div>
         </div>
-    </section>
+    </footer>
 {% endblock %}

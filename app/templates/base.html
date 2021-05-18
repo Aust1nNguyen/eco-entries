@@ -29,14 +29,14 @@
     <div class="navbar">
         <div class="container flex">
           <div class="flex">
-            <h2 class="logo"><a href="/index">App name</a></h3>
+            <h2 class="logo"><a href="/index">App name</a></h2>
               {% if current_user.is_anonymous %}
-              <a href="{{ url_for('content') }}">Course</a></li>
-              <a href="{{ url_for('quiz') }}">Quiz</a></li>
+              <a href="{{ url_for('content') }}">Course</a>
+              <a href="{{ url_for('quiz') }}">Quiz</a>
               {% else %}
-              <a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-              <a href="{{ url_for('content') }}">Course</a></li>
-              <a href="{{ url_for('quiz') }}">Quiz</a></li>
+              <a href="{{ url_for('dashboard') }}">Dashboard</a>
+              <a href="{{ url_for('content') }}">Course</a>
+              <a href="{{ url_for('quiz') }}">Quiz</a>
               {% endif %}
           </div>
             <nav>
@@ -55,30 +55,8 @@
     </div>
 
     
-    {% block content %}
+{% block content %}
 
-   <!--Footer-->
-    <footer class="footer bg-dark py-5">
-        <div class="container grid grid-3">
-            <div>
-                <h1>App name</h1>
-                <p>Copyright &copy; 2021</p>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Docs</a></li>
-                </ul>
-            </nav>
-            <div class="social">
-                <a href="#" class="fab fa-github fa-2x"></a>
-                <a href="#" class="fab fa-facebook fa-2x"></a>
-                <a href="#" class="fab fa-instagram fa-2x"></a>
-                <a href="#" class="fab fa-linkedin fa-2x"></a>
-            </div>
-        </div>
-    </footer>
 {% endblock %}	
 </body>
 </html>
