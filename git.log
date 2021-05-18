@@ -1,0 +1,128 @@
+* 194f079 : testing
+* 2c4f8a1 : update css
+* 517e992 : update dashboard
+*   2c3bdc7 : Merge branch 'feature-css' of https://github.com/ndkhiem3010/CITS3403_Project
+|\  
+| * 9184da0 : Navbar changes
+* | b587dea : merge backend
+|\| 
+| * b0d09f7 : Updated Dashboard
+| * 8e31279 : CSS Changes
+* | 8bd1a6f : update quiz logic
+|/  
+* 28b6468 : untrack files gitignore
+*   b0397e6 : Merge branch 'backend'
+|\  
+| * ad900fb : add drivers for different os
+| * dbe9af4 : update README
+* |   44d1045 : merge backend to master
+|\ \  
+| |/  
+|/|   
+| * f6f4b34 : CSS changes
+| *   f885edf : Quiz Changes
+| |\  
+| | * c5e1c64 : Buttons on all quizzes
+| | * fbfa842 : Changes to css and id
+| | * 58291fa : Correct Answers
+| * |   be62b79 : Feature changes
+| |\ \  
+| | * | b37ca32 : CSS Improvements
+| | * | 5b8fb7d : CSS changes
+| | * | 87cd6f6 : CSS changes
+| | |/  
+| | * 9538139 : javascript
+| | * 3c3d973 : comment
+| * |   66035d2 : Quiz changes
+| |\ \  
+| * \ \   8ba1918 : Minor changes
+| |\ \ \  
+| | | |/  
+| | |/|   
+| * | | 5e20bfd : Small changes to structure
+* | | | 1952304 : update test and routes
+| |_|/  
+|/| |   
+* | | 6741eb6 : bug fixes
+| |/  
+|/|   
+* | 3e36aef : update README
+* | ccb0864 : bug fixes
+* | 1d56721 : Untrack files in .gitignore
+* | 1c30e20 : update README
+* | 56dd722 : bug fixes
+* | 97eb5e3 : update system test
+|/  
+* ddfb2d8 : bug fixes
+*   aa4cd15 : merge content to master
+|\  
+| * fbcb2a9 : Added quiz and content
+| * 4327fbc : Updated css, courses and quizzes
+* |   419b293 : merge client and server side
+|\ \  
+| * | 35c9d1d : merge local
+* | | 3817f9c : update server side
+* | | 5fd884f : update backend
+|/ /  
+* / 522b209 : modify route
+|/  
+* 82039cb : New quiz
+* c315054 : Updated content
+* 92221c5 : bug fixes
+*   97a8bb2 : merge content
+|\  
+| * 90dbb47 : Updated routes with content and courses
+| * fcb3d5f : Updated quiz page with questions
+| * 2b38d3a : Updated sign up page
+| * 85ee4f5 : Updated login page
+| * 61d19a0 : Updated Index page
+| * c32a3ae : Updated Dashboard page
+| * b4c88c1 : Courses page
+| * 60f8eeb : Content page
+| * 2011fd0 : Update base html with content
+* | 5b369b7 : merge quiz
+* |   cbfe839 : Merge branch 'feature-quiz'
+|\ \  
+| |/  
+|/|   
+| * 1343e6c : Add files via upload
+| * ec47a0a : Delete CITS3403_Project-master directory
+| * 82ad2ef : Add files via upload
+| * 92eb8d0 : Delete CITS3403_Project-master directory
+| * c9d4428 : Add files via upload
+* | 82f917b : login user to dashbaord
+|/  
+* e3b7067 : update dashboard
+* 5ac5e60 : init test
+* 19a7f0f : update database model
+* dddf8aa : update database and user login system
+*   ddc740d : Merge branch 'feature-dashboard'
+|\  
+| * dc1fb67 : untrack files in .gitignore
+|/  
+*   7589831 : update gitignore
+|\  
+| * cb32992 : update gitignore
+* | e7898d0 : update gitignore
+|/  
+*   3cd48a4 : Merge branch 'feature-loginform' of https://github.com/ndkhiem3010/CITS3403_Project into feature-loginform
+|\  
+| * 857bd85 : Updated routes with blueprint
+* | 7b7bc48 : database initialisation
+* | d6709e4 : Delete sign_up.html
+|/  
+* dd9384d : login update on routes
+* 9aab5e6 : login v2
+* b4b7aa6 : Updated base html with login messages'
+* 4fce375 : Sign up page retry
+* 2216028 : Sign up page
+* e7a0a0f : add login form
+* 4dc652e : bug fixes
+* 7a60788 : bug fixes
+* 88d03df : Create base.html and update css
+* 9a310b7 : Update imports
+* ab71fec : Reorganize repository
+* ce26ccf : Update templates and routes
+* 9e191c2 : Add README file
+* d352bef : Add gitignore
+* 81a2cda : Initial commit
