@@ -13,9 +13,15 @@
         
         <p class="form_heads">{{ form.username.label }}</p> 
         <div class="hi"> {{ form.username(size=32) }}</div>
+        {% for error in form.username.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
 
         <p class="form_heads">{{ form.password.label }}</p>
         <div>{{ form.password(size=32) }}</div>
+        {% for error in form.password.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
         <span class="remember_me">{{ form.remember_me() }} {{ form.remember_me.label }}</span>
         <p class="random">{{ form.submit() }}</p>
     </form>

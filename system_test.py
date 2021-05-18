@@ -133,23 +133,23 @@ class SystemTest(unittest.TestCase):
         # do the quiz
         # answers = ["b", "c", "c", "b", "c"]
         self.driver.find_element_by_id('q1b').click()
+        self.driver.implicitly_wait(5)
         time.sleep(1)
         self.driver.find_element_by_id('q2b').click()
+        self.driver.implicitly_wait(5)
         time.sleep(1)
         self.driver.find_element_by_id('q3c').click()
+        self.driver.implicitly_wait(5)
         time.sleep(1)
         self.driver.find_element_by_id('q4a').click()
+        self.driver.implicitly_wait(5)
         time.sleep(1)
         self.driver.find_element_by_id('q5c').click()
+        self.driver.implicitly_wait(5)
         time.sleep(1)
 
         self.driver.find_element_by_id('submit').click()
         time.sleep(1)
-
-
-        # check if the feedback return
-        # result = self.driver.find_element_by_id('results')
-        # self.assertEqual(result.get_attribute('innerHTML'), 'Your result is 3 out of 5')
 
         # check if result display on that dashboard
         self.driver.find_element_by_xpath("//a[contains(@href,'dashboard')]").click()

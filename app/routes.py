@@ -35,7 +35,8 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         # if the user is not exist or the password is incorrect
         if user is None or not user.check_password(form.password.data):
-            flash('Invalid username or password')
+            form.username.errors.append("Please check your username and password again")
+            form.password.errors.append("Please check your username and password again")
             return redirect(url_for('login'))
         # register valid user as logged in state
         login_user(user, remember=form.remember_me.data)
