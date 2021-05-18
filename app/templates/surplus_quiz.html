@@ -20,7 +20,7 @@
   </header>
   <section>
       <div id="results"></div>
-      <form action="#" name="quizForm" onsubmit="return submitAnswers()">
+      <form action=" {{ url_for('surplus_quiz') }}" name="quizForm" method="POST" onsubmit=submitAnswers()>
           <h3 id ="q1h">Consumer surplus is best defined as:</h3>
           <input type="radio" name="q1" value="a" id="q1a"> The additional benefit consumers obtain when the price they are prepared to pay is greater than the price they actually pay. 
           <br>

@@ -58,16 +58,8 @@ class User(UserMixin, db.Model):
         return Course.query.join(
             enrolled_course, (enrolled_course.c.course_id == Course.id)).filter(
                 enrolled_course.c.user_id == self.id)
-    
-    # return a list of course name
-    # def enrolled_coursename(self):
-    #     courses = self.enrolled_course()
-    #     res = []
-    #     for course in courses:
-    #         res.append(course.coursename)
-    #     return res
 
-    # return a list of completed entities
+    # return a list of completed quizes - only keep the newest version
     def completed_quiz(self):
         res = []
         quizname = []
@@ -80,15 +72,6 @@ class User(UserMixin, db.Model):
                 quizname.append(quiz.quizname)
         return res
     
-    # # return a list of quiz name and the quiz score
-    # def completed_quizdata(self):
-    #     quizes = self.completed_quiz()
-    #     res = []
-    #     for quiz in quizes:
-    #         if quiz.quizname not in res:
-    #             res.append([quiz.quizname)
-    #     return res
-
     # represent data
     def __repr__ (self):
         return '<User {}>'.format(self.username)
@@ -117,9 +100,17 @@ class Quiz(db.Model):
     def __repr__(self):
         return '<Quiz {} url {}>'.format(self.id, self.quizurl)
 
-
+# check if the course has been added to database
 def is_init_course():
     courses = Course.query.all()
     if not courses:
         return False
     return True
+
+# return quiz score out of hundred
+def quiz_score(questions, answers):
+    correct = 0
+    for i in range(5):
+        if questions[i] == answers[i]:
+            correct += 1
+    return correct / 5 * 100

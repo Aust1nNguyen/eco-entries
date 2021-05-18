@@ -11,10 +11,10 @@ function submitAnswers(){
     let q5 = document.forms["quizForm"]["q5"].value;
 
     // Validation
-     if (q1 == null || q1 == ""){
-         alert("You missed question 1");
-         return false;
-     }
+    if (q1 == null || q1 == ""){
+        alert("You missed question 1");
+        return false;
+    }
 
     for (i = 1; i <= total; i++){
         // Use eval to concat string q with value of i to get var q1, q2, etc
@@ -81,6 +81,27 @@ function send_score() {
     var filename = "Demand and Supply";
     var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
     console.log(url);
+    var data = score/total*100;
+    $.post(url, data);
+    return false;
+}
+
+var fileName = location.href.split("/").slice(-1);
+    var fileName = location.href.slice(0, -5) 
+    let precentage = (score/total)*100;
+    let r = document.getElementById("return");
+    r.innerHTML = "<form action=\"{{ url_for('handle_quiz', quizname='" + "Demand and Supply"
+    + "', quizurl='"+ fileName +"', quiz_scoreoutofhundred=" + precentage +") }}\"> <input type=\"submit\" value=\"Return\"> </form>"
+
+
+    return false;
+
+
+function send_score() {
+    var id = location.href.split("/").slice(-1);
+    var id = location.href.slice(0, -5)  
+    var filename = "Demand and Supply";
+    var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
     var data = score/total*100;
     $.post(url, data);
     return false;

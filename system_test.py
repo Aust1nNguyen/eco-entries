@@ -14,8 +14,15 @@ class SystemTest(unittest.TestCase):
         db.init_app(app)
         db.create_all()
 
-        chromedriver = os.path.join(basedir, 'drivers', 'chromedriver.exe')
+        # Windows chromedriver
+        chromedriver = os.path.join(basedir, 'drivers','chromedriver_win32 (90)', 'chromedriver.exe')
         self.driver = webdriver.Chrome(executable_path=chromedriver)
+
+        # Linux chromedriver
+        # chromedriver = os.path.join(basedir, 'drivers','chromedriver_linux64', 'chromedriver.exe')
+
+        # Mac chromedriver
+        # chromedriver = os.path.join(basedir, 'drivers','chromedriver_mac64', 'chromedriver.exe')
 
         # geckodriver = os.path.join(basedir, 'drivers', 'geckodriver.exe')
         # self.driver = webdriver.Firefox(executable_path=geckodriver)
@@ -119,21 +126,26 @@ class SystemTest(unittest.TestCase):
         time.sleep(1)
 
         # choose a quiz
-        self.driver.find_element_by_xpath("//a[contains(@href,'elasticity_quiz')]").click()
+        self.driver.find_element_by_xpath("//a[contains(@href,'ds_quiz')]").click()
         self.driver.implicitly_wait(5)
         time.sleep(1)
 
         # do the quiz
-        self.driver.find_element_by_id('q1a').click()
+        # answers = ["b", "c", "c", "b", "c"]
+        self.driver.find_element_by_id('q1b').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q2c').click()
+        self.driver.find_element_by_id('q2b').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q3b').click()
+        self.driver.find_element_by_id('q3c').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q4d').click()
+        self.driver.find_element_by_id('q4a').click()
         time.sleep(1)
-        self.driver.find_element_by_id('q5a').click()
+        self.driver.find_element_by_id('q5c').click()
         time.sleep(1)
+
+        # check if the feedback return
+        # result = self.driver.find_element_by_id('submit')
+        # self.assertEqual(result.get_attribute('innerHTML'), 'Your result is 3 out of 5')
 
 
     def test_signup_invalid(self):
@@ -186,6 +198,17 @@ class SystemTest(unittest.TestCase):
         # check login fail - still at login page
         login = self.driver.find_element_by_class_name('login')
         self.assertEqual(login.get_attribute('innerHTML'), 'Sign In')
+
+
+    def test_redirect_login(self):
+        self.driver.get('http://localhost:5000/quiz')
+        self.driver.implicitly_wait(5)
+        time.sleep(1)
+
+        # check if login page
+        login = self.driver.find_element_by_class_name('login')
+        self.assertEqual(login.get_attribute('innerHTML'), 'Sign In')
+
 
 if __name__=='__main__':
   unittest.main(verbosity=2)
