@@ -58,7 +58,7 @@ class User(UserMixin, db.Model):
         return Course.query.join(
             enrolled_course, (enrolled_course.c.course_id == Course.id)).filter(
                 enrolled_course.c.user_id == self.id)
-
+    
     # return a list of completed quizes - only keep the newest version
     def completed_quiz(self):
         res = []

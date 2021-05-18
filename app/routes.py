@@ -80,7 +80,7 @@ def logout():
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    courses = current_user.enrolled_course()
+    courses = current_user.enrolled_course().all()
     quizes = current_user.completed_quiz()
 
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)

@@ -9,7 +9,6 @@
         <div class="card-single">
             {% if courses %}        
             <h3><b>Continue Learning</b></h3>
-            <p>You have not completed any courses. Start one <a href="{{url_for('content')}}">here!</a></p>
             <ul>
                 {% for course in courses %}
                 <li><a href="{{ url_for(course.courseurl) }}">{{ course.coursename }}</a></li>
@@ -25,7 +24,6 @@
         <div class="card-single">
             {% if quizes %}
             <h3><b>Completed quiz</b></h3>
-            <p>You have not completed any courses. Start one <a href="{{url_for('quiz')}}">here!</a></p>
             <ul>
                 {% for quiz in quizes %}
                 <li><a href="{{ url_for(quiz.quizurl) }}">{{ quiz.quizname }}</a>: {{ quiz.quiz_scoreoutofhundred }}%</li>
