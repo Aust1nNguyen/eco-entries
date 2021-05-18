@@ -8,6 +8,7 @@
     <div class="cards">
         <div class="card-single">
             <h3><b>Continue Learning</b></h3>
+            <p>You have not completed any courses. Start one <a href="{{url_for('content')}}">here!</a></p>
             <ul>
                 {% for course in courses %}
                 <li><a href="{{ url_for(course.courseurl) }}">{{ course.coursename }}</a></li>
@@ -17,6 +18,7 @@
         </div>
         <div class="card-single">
             <h3><b>Completed quiz</b></h3>
+            <p>You have not completed any courses. Start one <a href="{{url_for('quiz')}}">here!</a></p>
             <ul>
                 {% for quiz in quizes %}
                 <li><a href="{{ url_for(quiz.quizurl) }}">{{ quiz.quizname }}</a>: {{ quiz.quiz_scoreoutofhundred }}%</li>
@@ -24,5 +26,20 @@
             </ul>
         </div>
     </main>
+</div>
+<br> <br> <br> 
+<div class="container-divs">
+    <h3 style="text-align: center;">AVAILABLE COURSES </h3>
+    <section class="parent" id="wrapper">
+    <div class="res-circle">
+        <div class="circle-txt"> <a href="{{ url_for('ds') }}"> DEMAND AND SUPPLY</a></div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt"><a href="{{ url_for('elasticity') }}"> ELASTICITY</a></div> 
+    </div>
+    <div class="res-circle">
+        <div class="circle-txt"><a href="{{ url_for('surplus') }}">CONSUMER AND <br> PRODUCER SURPLUS</a></div> 
+    </div>
+    </section>
 </div>
 {% endblock %}
