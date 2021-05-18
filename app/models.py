@@ -71,6 +71,22 @@ class User(UserMixin, db.Model):
                 res.append(quiz)
                 quizname.append(quiz.quizname)
         return res
+
+    # get the total user course points 
+    def user_course_points(self):
+        courses = self.enrolled_course()
+        point = 0
+        for course in courses:
+            point += 10
+        return point    
+
+    # get the total user quiz points 
+    def user_quiz_points(self):
+        quizes = self.completed_quiz()
+        point = 0
+        for quiz in quizes:
+            point += quiz.quiz_scoreoutofhundred / 5
+        return point
     
     # represent data
     def __repr__ (self):
@@ -114,3 +130,5 @@ def quiz_score(questions, answers):
         if questions[i] == answers[i]:
             correct += 1
     return correct / 5 * 100
+
+

@@ -1,4 +1,7 @@
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  
 function submitAnswers(){
     let total = 5;
     let score = 0;
@@ -52,57 +55,9 @@ function submitAnswers(){
             correction.innerHTML = "<h3>You selected <span>" + eval("q" + i) + "</span>. The correct answer was <span>" + answers[i-1] +"</span></h3>" 
             correction.classList.add("wrong");
         }
+        // Display Results
+        let results = document.getElementById("results");
+        results.innerHTML = "<h3>You scored <span>" + score+ "</span> out of <span>" + total + "</span></h3>"
+
     }
-
-    // Display Results
-    let results = document.getElementById("results");
-    results.innerHTML = "<h3>You scored <span>" + score+ "</span> out of <span>" + total + "</span></h3>"
-
-    // alert("You scored " + score + " out of " + total);
-    //var fileName = location.href.split("/").slice(-1);
-    //var fileName = location.href.slice(0, -5) 
-    //let precentage = (score/total)*100;
-    //let r = document.getElementById("return");
-    //r.innerHTML = "<form action=\"{{ url_for('handle_quiz', quizname='" + "Demand and Supply"
-    //+ "', quizurl='"+ fileName +"', quiz_scoreoutofhundred=" + precentage +") }}\"> <input type=\"submit\" value=\"Return\"> </form>"
-
-
-    return false;
-}
-
-function send_score() {
-    var script = document.createElement('script');
-    script.src = 'https://code.jquery.com/jquery-3.6.0.js';
-    contentType= "application/json; charset=utf-8",
-    document.getElementsByTagName('head')[0].appendChild(script);
-
-    console.log("got here");
-    var id = location.href.split("/").slice(-1);
-    var filename = "Demand and Supply";
-    var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
-    console.log(url);
-    var data = score/total*100;
-    $.post(url, data);
-    return false;
-}
-
-var fileName = location.href.split("/").slice(-1);
-    var fileName = location.href.slice(0, -5) 
-    let precentage = (score/total)*100;
-    let r = document.getElementById("return");
-    r.innerHTML = "<form action=\"{{ url_for('handle_quiz', quizname='" + "Demand and Supply"
-    + "', quizurl='"+ fileName +"', quiz_scoreoutofhundred=" + precentage +") }}\"> <input type=\"submit\" value=\"Return\"> </form>"
-
-
-    return false;
-
-
-function send_score() {
-    var id = location.href.split("/").slice(-1);
-    var id = location.href.slice(0, -5)  
-    var filename = "Demand and Supply";
-    var url = "handle_quiz/"+ filename +"/"+ id +"/"+ score/total*100;
-    var data = score/total*100;
-    $.post(url, data);
-    return false;
 }

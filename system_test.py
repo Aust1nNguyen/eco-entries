@@ -143,10 +143,19 @@ class SystemTest(unittest.TestCase):
         self.driver.find_element_by_id('q5c').click()
         time.sleep(1)
 
+        self.driver.find_element_by_id('submit').click()
+        time.sleep(1)
+
+
         # check if the feedback return
-        # result = self.driver.find_element_by_id('submit')
+        # result = self.driver.find_element_by_id('results')
         # self.assertEqual(result.get_attribute('innerHTML'), 'Your result is 3 out of 5')
 
+        # check if result display on that dashboard
+        self.driver.find_element_by_xpath("//a[contains(@href,'dashboard')]").click()
+
+        ds =  self.driver.find_element_by_xpath("//a[contains(@href,'ds')]")
+        self.assertIsNotNone(ds)
 
     def test_signup_invalid(self):
 

@@ -1,5 +1,7 @@
 from datetime import datetime
+from time import sleep
 from flask import Flask, render_template, flash, redirect, url_for, request
+from flask import jsonify
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db, models
 from app.forms import LoginForm, SignUpForm, EmptyForm
@@ -91,11 +93,20 @@ def logout():
 def dashboard():
     courses = current_user.enrolled_course()
     quizes = current_user.completed_quiz()
+
+    if not courses:
+        courses = None
+    if not quizes:
+        quizes = None
+
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
 
 @app.route("/profile")
 def profile():
-    return render_template("profile.html", title= "Profile")
+    course_point = float(current_user.user_course_points())
+    quiz_point = current_user.user_quiz_points()
+    total_point = course_point + quiz_point
+    return render_template("profile.html", title= "Profile", coursepoint=course_point, quizpoint=quiz_point, totalpoint=total_point)
 
 
 # Courses view
@@ -131,11 +142,11 @@ def surplus():
     return render_template("surplus.html", title= "Consumer and Producer Surplus")
 
 # Quiz view
-@app.route('/handle_quiz/<quizurl>')
-@login_required
-def handle_quiz(quizurl):
-    return redirect(url_for('dashboard'))
-    
+@app.route('/feedback')
+def feedback():
+    return redirect(url_for('/dashboard'))
+
+
 @app.route('/quiz')
 @login_required
 def quiz():
@@ -156,10 +167,12 @@ def ds_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Demand and Supply', quizurl='ds', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Demand and Supply', quizurl='ds_quiz', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
+        sleep(60)
         return redirect(url_for('dashboard'))
+
     elif request.method == 'GET':
         return render_template('ds_quiz.html', title='Quiz', form='quizForm')
 
@@ -178,9 +191,10 @@ def elasticity_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Elasticity', quizurl='elasticity', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Elasticity', quizurl='elasticity_quiz', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
+        sleep(60)
         return redirect(url_for('dashboard'))
     elif request.method == 'GET':
         return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
@@ -200,9 +214,10 @@ def surplus_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Consumer and Producer Surplus', quizurl='surplus_quiz', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
+        sleep(60)
         return redirect(url_for('dashboard'))
     elif request.method == 'GET':
         return render_template('surplus_quiz.html', title='Quiz', form='quizForm')
