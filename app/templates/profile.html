@@ -1,8 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<head>
+    <script src="{{ url_for('static', filename='js/ProfileManager.js') }}"></script>
+    <style>
+    </style>
+  </head>
+
 <div class="myprofile">
-    <img src="/static/images/avatar.jpg" alt="avatar">
+    <!--<img id="profilepic" class="profilepicholder" height="200" width="200">-->
+
+    <p>Click on the "Choose File" button to upload a file:</p>
+
+    <img id="pic"></img>
+
+    <form name="picForm" method="POST" onsubmit=submitProfile()>
+        <input type="file" id="myFile" name="filename">
+        <input type="submit">
+    </form>
+    
+    <p id="aboutPicture"></p>
+
     <h2>{{ current_user.username }}</h2>    
     <div class="profileprogress profiletut">
         <span class="ps1">&nbsp;</span>
@@ -17,7 +36,10 @@
         <span class="ps1">&nbsp;</span><span class="ps2">EXERCISES:</span>
         <span class="ps3">0 points</span>
     </div><div class="profileprogress profiletot"><span class="ps1">&nbsp;</span>
-        <span class="ps2">TOTAL:</span><span class="ps3">0 points</span>
+        <span class="ps2">TOTAL:</span><span class="ps3"> 0 points</span>
     </div>
 </div>
+<script>
+
+</script>
 {%endblock%}

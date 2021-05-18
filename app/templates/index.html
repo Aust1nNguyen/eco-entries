@@ -22,18 +22,19 @@
         </div>
     </section>
 
-    <section class="parent">
-    <div class="res-circle">
-        <div class="circle-txt"> <a href="{{ url_for('ds') }}"> DEMAND AND SUPPLY</a></div> 
+    <div class="container-divs">
+        <section class="parent" id="wrapper">
+        <div class="res-circle">
+            <div class="circle-txt"> <a href="{{ url_for('ds') }}"> DEMAND AND SUPPLY</a></div> 
+        </div>
+        <div class="res-circle">
+            <div class="circle-txt"><a href="{{ url_for('elasticity') }}"> ELASTICITY</a></div> 
+        </div>
+        <div class="res-circle">
+            <div class="circle-txt"><a href="{{ url_for('surplus') }}">CONSUMER AND <br> PRODUCER SURPLUS</a></div> 
+        </div>
+        </section>
     </div>
-    <div class="res-circle">
-        <div class="circle-txt"><a href="{{ url_for('elasticity') }}"> ELASTICITY</a></div> 
-    </div>
-    <div class="res-circle">
-        <div class="circle-txt"><a href="{{ url_for('surplus') }}">CONSUMER AND <br> PRODUCER SURPLUS</a></div> 
-    </div>
-
-    </section>
         
     <!--Stats
     <section class="stats">
@@ -80,14 +81,14 @@
    <footer class="footer bg-dark py-5">
         <div class="container grid grid-3">
             <div>
-                <h1>App name</h1>
+                <h1>ECON101</h1>
                 <p>Copyright &copy; 2021</p>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#">Courses</a></li>
-                    <li><a href="#">Docs</a></li>
+                    <li><a href=#>Home</a></li>
+                    <li><a href="{{ url_for('content') }}">Courses</a></li>
+                    <li><a href="{{ url_for('quiz') }}">Quizzes</a></li>
                 </ul>
             </nav>
             <div class="social">

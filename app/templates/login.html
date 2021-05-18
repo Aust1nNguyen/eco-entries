@@ -14,13 +14,15 @@
         </p>
 
         <p class="form_heads">{{ form.password.label }}</p>
+     
+
         <p>{{ form.password(size=32) }}<br>
             {% for error in form.username.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
         <span class="remember_me">{{ form.remember_me() }} {{ form.remember_me.label }}</span>
-        <p class="random">{{ form.submit() }}</p>
+        <p class="random">{{ form.submit() }}</p>    
     </form>
 
     <p class="un">New User? <a href="{{ url_for('sign_up') }}">Click to Register</a></p>

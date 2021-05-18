@@ -93,10 +93,6 @@ def dashboard():
     quizes = current_user.completed_quiz()
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
 
-@app.route("/profile")
-def profile():
-    return render_template("profile.html", title= "Profile")
-
 
 # Courses view
 @app.route('/content')
@@ -140,6 +136,11 @@ def handle_quiz(quizurl):
 @login_required
 def quiz():
     return render_template('quiz.html', title='Quiz', form='quizForm')
+
+@app.route('/profile')
+@login_required
+def profile():
+    return render_template('profile.html', title='Profile', form='picForm')
 
 @app.route('/ds_quiz', methods=['GET', 'POST'])
 @login_required
@@ -200,7 +201,7 @@ def surplus_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Consumer and Producer Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
         return redirect(url_for('dashboard'))
