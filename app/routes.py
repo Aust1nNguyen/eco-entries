@@ -137,10 +137,12 @@ def handle_quiz(quizurl):
     return redirect(url_for('dashboard'))
     
 @app.route('/quiz')
+@login_required
 def quiz():
     return render_template('quiz.html', title='Quiz', form='quizForm')
 
 @app.route('/ds_quiz', methods=['GET', 'POST'])
+@login_required
 def ds_quiz():
     answers = ["b", "c", "c", "b", "c"]
     
@@ -162,6 +164,7 @@ def ds_quiz():
         return render_template('ds_quiz.html', title='Quiz', form='quizForm')
 
 @app.route('/elasticity_quiz', methods=['GET', 'POST'])
+@login_required
 def elasticity_quiz():
     answers = ["c", "a", "a", "c", "a"]
     
@@ -183,6 +186,7 @@ def elasticity_quiz():
         return render_template('elasticity_quiz.html', title='Quiz', form='quizForm')
 
 @app.route('/surplus_quiz', methods=['GET', 'POST'])
+@login_required
 def surplus_quiz():
     answers = ["a", "c", "b", "c", "c"]
     

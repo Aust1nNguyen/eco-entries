@@ -14,8 +14,15 @@ class SystemTest(unittest.TestCase):
         db.init_app(app)
         db.create_all()
 
-        chromedriver = os.path.join(basedir, 'drivers', 'chromedriver.exe')
+        # Windows chromedriver
+        chromedriver = os.path.join(basedir, 'drivers','chromedriver_win32 (90)', 'chromedriver.exe')
         self.driver = webdriver.Chrome(executable_path=chromedriver)
+
+        # Linux chromedriver
+        # chromedriver = os.path.join(basedir, 'drivers','chromedriver_linux64', 'chromedriver.exe')
+
+        # Mac chromedriver
+        # chromedriver = os.path.join(basedir, 'drivers','chromedriver_mac64', 'chromedriver.exe')
 
         # geckodriver = os.path.join(basedir, 'drivers', 'geckodriver.exe')
         # self.driver = webdriver.Firefox(executable_path=geckodriver)
@@ -191,6 +198,17 @@ class SystemTest(unittest.TestCase):
         # check login fail - still at login page
         login = self.driver.find_element_by_class_name('login')
         self.assertEqual(login.get_attribute('innerHTML'), 'Sign In')
+
+
+    def test_redirect_login(self):
+        self.driver.get('http://localhost:5000/quiz')
+        self.driver.implicitly_wait(5)
+        time.sleep(1)
+
+        # check if login page
+        login = self.driver.find_element_by_class_name('login')
+        self.assertEqual(login.get_attribute('innerHTML'), 'Sign In')
+
 
 if __name__=='__main__':
   unittest.main(verbosity=2)
