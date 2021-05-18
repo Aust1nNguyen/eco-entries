@@ -200,7 +200,7 @@ def surplus_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Consumer and Producer Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
         return redirect(url_for('dashboard'))
