@@ -9,17 +9,6 @@ from app.models import User, Course, Quiz
 from werkzeug.urls import url_parse
 from sqlalchemy import event
 
-# Intialize database values
-# @event.listens_for(Course.__table__, 'after_create')
-# def insert_initial_values(*args, **kwargs):
-    
-#     # Add available courses
-#     db.session.add(Course(coursename='Demand and Supply', courseurl='ds'))
-#     db.session.add(Course(coursename='Elasticity', courseurl='elasticity'))
-#     db.session.add(Course(coursename='Consumer and Producer Surplus', courseurl='surplus'))
-#     db.session.commit()
-
-
 # Home view
 @app.route('/')
 @app.route('/index')
@@ -93,11 +82,6 @@ def logout():
 def dashboard():
     courses = current_user.enrolled_course()
     quizes = current_user.completed_quiz()
-
-    if not courses:
-        courses = None
-    if not quizes:
-        quizes = None
 
     return render_template("dashboard.html", title='Dashboard', courses=courses, quizes=quizes)
 
@@ -214,7 +198,7 @@ def surplus_quiz():
 
         score = models.quiz_score(questions, answers)
 
-        quiz = Quiz(quizname='Consumer and Producer Surplus', quizurl='surplus_quiz', quiz_scoreoutofhundred=score)
+        quiz = Quiz(quizname='Consumer and Producer Surplus', quizurl='surplus', quiz_scoreoutofhundred=score)
         current_user.attempt(quiz)
         db.session.commit()
         sleep(60)

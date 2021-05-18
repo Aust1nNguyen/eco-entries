@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="myprofile">
-    <img src="/static/images/avatar.jpg" alt="avatar">
+    <img style="width: 30%;" src="/static/images/avatar.jpg" alt="avatar">
     <h2>{{ current_user.username }}</h2>    
     <div class="profileprogress profiletut">
         <span class="ps1">&nbsp;</span>
@@ -14,7 +14,11 @@
         <span class="ps2">QUIZZES:</span>
         <span class="ps3">{{ quizpoint }} points</span>
     </div><div class="profileprogress profiletot"><span class="ps1">&nbsp;</span>
+<<<<<<< HEAD
         <span class="ps2">TOTAL:</span><span class="ps3"> {{ totalpoint }} points</span>
+=======
+        <span class="ps2">TOTAL:</span><span class="ps3"> 0 points</span>
+>>>>>>> b0d09f7f9cd41f1c6005a5712d5e877cf14eaa18
     </div>
 </div>
 {%endblock%}
